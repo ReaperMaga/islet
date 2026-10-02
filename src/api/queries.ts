@@ -36,7 +36,8 @@ query Search($q: String!, $first: Int!, $after: String) {
 
 // Timeline item fragments. Issue-valid ones first, PR-only ones after.
 const COMMENT_FIELDS = `id author { ${ACTOR} } bodyHTML createdAt url ${REACTIONS}`;
-const ASSIGNEE = '... on User { login } ... on Bot { login } ... on Mannequin { login } ... on Organization { login }';
+// No Organization/Team fragments: their fields need the read:org scope, and Islet only asks for repo.
+const ASSIGNEE = '... on User { login } ... on Bot { login } ... on Mannequin { login }';
 const REF_SOURCE = 'number title url repository { nameWithOwner }';
 
 const TIMELINE_COMMON = `
@@ -56,7 +57,7 @@ const TIMELINE_PULL = `
   ${TIMELINE_COMMON}
   ... on PullRequestReview { ${COMMENT_FIELDS} state comments { totalCount } }
   ... on MergedEvent { id createdAt actor { ${ACTOR} } mergeRefName commit { abbreviatedOid } }
-  ... on ReviewRequestedEvent { id createdAt actor { ${ACTOR} } requestedReviewer { ... on User { login } ... on Team { name } ... on Bot { login } ... on Mannequin { login } } }
+  ... on ReviewRequestedEvent { id createdAt actor { ${ACTOR} } requestedReviewer { __typename ... on User { login } ... on Bot { login } ... on Mannequin { login } } }
   ... on HeadRefForcePushedEvent { id createdAt actor { ${ACTOR} } afterCommit { abbreviatedOid } }
   ... on ReadyForReviewEvent { id createdAt actor { ${ACTOR} } }
   ... on ConvertToDraftEvent { id createdAt actor { ${ACTOR} } }

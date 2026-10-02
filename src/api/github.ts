@@ -73,6 +73,8 @@ export function createGitHubApi(getToken: TokenProvider): GitHubApi {
     const errors: any[] | undefined = json?.errors;
     if (errors?.length) {
       if (errors.some((e) => e.type === 'RATE_LIMITED')) throw rateLimitError(res);
+      // Fields hidden for lack of a scope come back as null alongside the rest of the data: keep the data.
+      if (json?.data && errors.every((e) => e.type === 'INSUFFICIENT_SCOPES' || e.type === 'FORBIDDEN')) return json.data as T;
       throw new Error(errors[0]?.message || 'GitHub request failed');
     }
     return json.data as T;

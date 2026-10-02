@@ -111,7 +111,7 @@ export function timelineEntry(n: Raw): TimelineEntry | null {
       return event(n, 'renamed', `${n.previousTitle} → ${n.currentTitle}`);
     case 'ReviewRequestedEvent': {
       const r = n.requestedReviewer;
-      return event(n, 'review_requested', r?.login ?? r?.name);
+      return event(n, 'review_requested', r?.login ?? (r?.__typename === 'Team' ? 'a team' : undefined));
     }
     case 'CrossReferencedEvent': {
       const s = n.source;
