@@ -1,0 +1,163 @@
+/* Air / Islands design tokens shared by both webviews.
+   Matches the user's VS Code setup: Air dark + Islands panels + Rider syntax palette.
+   Every colour in the webviews must come from a token below. */
+
+:root {
+  color-scheme: dark;
+
+  /* surfaces (darkest -> lightest) */
+  --frame: #0e0f10;      /* window frame / gaps between islands */
+  --bg: #18191b;         /* island background (= editor + sidebar) */
+  --panel: #1e1f22;      /* cards, boxes inside an island */
+  --chip: #26272a;       /* pills, inputs, hover fill */
+  --chip-hover: #2b2d31; /* hover on chips, selected rows */
+  --line: #2e3034;       /* 1px borders and dividers */
+  --line-strong: #3c3f44;
+
+  /* text */
+  --fg: #dfe1e5;         /* primary text */
+  --fg2: #a3a6ab;        /* secondary text */
+  --fg3: #6f737a;        /* muted text, meta, placeholders */
+
+  /* Rider palette accents */
+  --blue: #6c95eb;
+  --purple: #c191ff;
+  --teal: #39cc8f;
+  --cyan: #66c3cc;
+  --tan: #c9a26d;
+  --pink: #ed94c0;
+  --red: #e5484d;
+
+  /* semantic */
+  --accent: var(--blue);          /* links, focus, primary action */
+  --state-open: var(--teal);
+  --state-closed: var(--red);     /* closed issue / closed PR */
+  --state-merged: var(--purple);
+  --state-draft: var(--fg3);
+  --check-ok: var(--teal);
+  --check-fail: var(--red);
+  --check-pending: var(--tan);
+
+  /* type */
+  --sans: Inter, "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", "JetBrainsMono Nerd Font", Consolas, monospace;
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs: 13px;
+  --fs-md: 14px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+
+  /* shape */
+  --r-sm: 6px;
+  --r: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+
+  /* spacing: 4px grid */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: var(--fs);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button { font: inherit; color: inherit; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-radius: var(--r-sm); }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: var(--r-pill); }
+::-webkit-scrollbar-track { background: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ---- shared primitives (used by both webviews via helpers in ui.ts) ---- */
+
+.avatar {
+  width: 18px; height: 18px; border-radius: 50%;
+  flex: none; background: var(--chip); object-fit: cover;
+}
+.avatar.lg { width: 28px; height: 28px; }
+
+.label-pill {
+  display: inline-flex; align-items: center;
+  height: 20px; padding: 0 8px; border-radius: var(--r-pill);
+  font-size: var(--fs-xs); font-weight: 500; line-height: 1; white-space: nowrap;
+  border: 1px solid var(--label-border);
+  background: var(--label-bg);
+  color: var(--label-fg);
+}
+
+.state-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 24px; padding: 0 10px; border-radius: var(--r-pill);
+  font-size: var(--fs-sm); font-weight: 500;
+  background: var(--chip); border: 1px solid var(--line);
+}
+.state-pill.open { color: var(--state-open); }
+.state-pill.closed { color: var(--state-closed); }
+.state-pill.merged { color: var(--state-merged); }
+.state-pill.draft { color: var(--state-draft); }
+
+.icon { width: 16px; height: 16px; flex: none; display: inline-block; vertical-align: middle; }
+.icon.sm { width: 14px; height: 14px; }
+
+.muted { color: var(--fg3); }
+.mono { font-family: var(--mono); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 28px; padding: 0 12px; border-radius: var(--r);
+  background: var(--chip); border: 1px solid var(--line-strong);
+  color: var(--fg); font-size: var(--fs); cursor: pointer;
+}
+.btn:hover { background: var(--chip-hover); }
+.btn.primary { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: .5; cursor: default; }
+
+.skeleton {
+  background: linear-gradient(90deg, var(--panel) 0%, var(--chip) 50%, var(--panel) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--r-sm);
+}
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+/* GitHub rendered markdown (bodyHTML) */
+.markdown { font-size: var(--fs-md); line-height: 1.65; color: var(--fg); overflow-wrap: anywhere; }
+.markdown > :first-child { margin-top: 0; }
+.markdown > :last-child { margin-bottom: 0; }
+.markdown p, .markdown ul, .markdown ol, .markdown pre, .markdown blockquote, .markdown table { margin: 0 0 var(--s3); }
+.markdown h1, .markdown h2, .markdown h3 { font-weight: 600; margin: var(--s4) 0 var(--s2); }
+.markdown h1 { font-size: 18px; } .markdown h2 { font-size: 16px; } .markdown h3 { font-size: 14px; }
+.markdown code { font-family: var(--mono); font-size: 12.5px; background: var(--chip); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+.markdown pre { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: var(--s3); overflow-x: auto; }
+.markdown pre code { background: none; border: 0; padding: 0; }
+.markdown blockquote { border-left: 2px solid var(--line-strong); margin-left: 0; padding-left: var(--s3); color: var(--fg2); }
+.markdown img { max-width: 100%; border-radius: var(--r); }
+.markdown table { border-collapse: collapse; display: block; overflow-x: auto; }
+.markdown th, .markdown td { border: 1px solid var(--line); padding: 6px 10px; }
+.markdown hr { border: 0; border-top: 1px solid var(--line); margin: var(--s4) 0; }
+.markdown input[type="checkbox"] { margin-right: 6px; }
+.markdown .user-mention, .markdown .issue-link { color: var(--accent); }

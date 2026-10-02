@@ -1,0 +1,27 @@
+{
+  "session": {
+    "signedIn": true,
+    "user": { "login": "octocat", "avatarUrl": "https://avatars.githubusercontent.com/u/583231?v=4", "url": "https://github.com/octocat" },
+    "repo": { "owner": "octocat", "name": "hello-world", "url": "https://github.com/octocat/hello-world", "rootPath": "C:/repo", "currentBranch": "main" }
+  },
+  "issues": [
+    {
+      "kind": "issue", "number": 12, "title": "Placeholder issue: replace with scripts/dump-fixtures.ts output", "state": "open", "isDraft": false,
+      "author": { "login": "octocat", "avatarUrl": "https://avatars.githubusercontent.com/u/583231?v=4", "url": "https://github.com/octocat" },
+      "createdAt": "2026-09-28T10:00:00Z", "updatedAt": "2026-10-01T10:00:00Z", "commentCount": 3,
+      "labels": [{ "name": "bug", "color": "d73a4a" }, { "name": "enhancement", "color": "a2eeef" }],
+      "assignees": [], "url": "https://github.com/octocat/hello-world/issues/12"
+    }
+  ],
+  "pulls": [
+    {
+      "kind": "pull", "number": 13, "title": "Placeholder pull request", "state": "open", "isDraft": false,
+      "author": { "login": "octocat", "avatarUrl": "https://avatars.githubusercontent.com/u/583231?v=4", "url": "https://github.com/octocat" },
+      "createdAt": "2026-09-30T10:00:00Z", "updatedAt": "2026-10-02T09:00:00Z", "commentCount": 1,
+      "labels": [{ "name": "feature", "color": "0e8a16" }],
+      "assignees": [], "url": "https://github.com/octocat/hello-world/pull/13",
+      "reviewDecision": "REVIEW_REQUIRED", "checks": "PENDING", "headRef": "feature/x", "baseRef": "main"
+    }
+  ],
+  "details": {}
+}

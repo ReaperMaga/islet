@@ -1,0 +1,58 @@
+{
+  "name": "air-github",
+  "displayName": "Air GitHub",
+  "description": "GitHub issues and pull requests for the current repository, in a JetBrains Air / Islands style.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": ["SCM Providers", "Other"],
+  "main": "./dist/extension.js",
+  "extensionDependencies": ["vscode.git"],
+  "activationEvents": ["onStartupFinished"],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "airGithub",
+          "title": "GitHub",
+          "icon": "media/github.svg"
+        }
+      ]
+    },
+    "views": {
+      "airGithub": [
+        {
+          "id": "airGithub.sidebar",
+          "name": "Issues & Pull Requests",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      { "command": "airGithub.refresh", "title": "Refresh", "category": "Air GitHub", "icon": "$(refresh)" },
+      { "command": "airGithub.signIn", "title": "Sign in to GitHub", "category": "Air GitHub" },
+      { "command": "airGithub.openItem", "title": "Open Issue or Pull Request…", "category": "Air GitHub" }
+    ],
+    "menus": {
+      "view/title": [
+        { "command": "airGithub.refresh", "when": "view == airGithub.sidebar", "group": "navigation" }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "package": "node build.mjs --production && vsce package --no-dependencies --allow-missing-repository --skip-license"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.95.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.0"
+  }
+}
