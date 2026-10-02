@@ -1,0 +1,10 @@
+src/**
+scripts/**
+dev/**
+node_modules/**
+**/*.map
+tsconfig.json
+build.mjs
+.impeccable/**
+DESIGN.md
+dist/mock.js
