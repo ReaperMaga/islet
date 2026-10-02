@@ -49,7 +49,7 @@ export function createGitHubApi(getToken: TokenProvider): GitHubApi {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
-          'User-Agent': 'air-github-vscode',
+          'User-Agent': 'islet-vscode',
         },
         body: JSON.stringify({ query, variables }),
       });

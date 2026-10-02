@@ -1,11 +1,18 @@
 {
-  "name": "air-github",
-  "displayName": "Air GitHub",
-  "description": "GitHub issues and pull requests for the current repository, in a JetBrains Air / Islands style.",
+  "name": "islet",
+  "displayName": "Islet",
+  "description": "GitHub issues and pull requests for the repository you're working in, in a calm Islands-style panel.",
   "version": "0.1.0",
-  "publisher": "local",
-  "private": true,
-  "license": "UNLICENSED",
+  "publisher": "reapermaga",
+  "author": "ReaperMaga",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ReaperMaga/islet.git"
+  },
+  "bugs": "https://github.com/ReaperMaga/islet/issues",
+  "homepage": "https://github.com/ReaperMaga/islet#readme",
+  "keywords": ["github", "issues", "pull requests", "code review", "islands"],
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -17,29 +24,29 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "airGithub",
+          "id": "islet",
           "title": "GitHub",
           "icon": "media/github.svg"
         }
       ]
     },
     "views": {
-      "airGithub": [
+      "islet": [
         {
-          "id": "airGithub.sidebar",
+          "id": "islet.sidebar",
           "name": "Issues & Pull Requests",
           "type": "webview"
         }
       ]
     },
     "commands": [
-      { "command": "airGithub.refresh", "title": "Refresh", "category": "Air GitHub", "icon": "$(refresh)" },
-      { "command": "airGithub.signIn", "title": "Sign in to GitHub", "category": "Air GitHub" },
-      { "command": "airGithub.openItem", "title": "Open Issue or Pull Request…", "category": "Air GitHub" }
+      { "command": "islet.refresh", "title": "Refresh", "category": "Islet", "icon": "$(refresh)" },
+      { "command": "islet.signIn", "title": "Sign in to GitHub", "category": "Islet" },
+      { "command": "islet.openItem", "title": "Open Issue or Pull Request…", "category": "Islet" }
     ],
     "menus": {
       "view/title": [
-        { "command": "airGithub.refresh", "when": "view == airGithub.sidebar", "group": "navigation" }
+        { "command": "islet.refresh", "when": "view == islet.sidebar", "group": "navigation" }
       ]
     }
   },
@@ -47,7 +54,7 @@
     "build": "node build.mjs",
     "watch": "node build.mjs --watch",
     "typecheck": "tsc --noEmit",
-    "package": "node build.mjs --production && vsce package --no-dependencies --allow-missing-repository --skip-license"
+    "package": "node build.mjs --production && npx --yes @vscode/vsce package --no-dependencies"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

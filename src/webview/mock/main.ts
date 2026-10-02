@@ -17,7 +17,7 @@ function page(items: ItemSummary[]): ListPage {
   return { items, pageInfo: { hasNextPage: false, endCursor: null }, totalCount: items.length };
 }
 
-window.__airMock = {
+window.__isletMock = {
   post(msg: ToExtension, reply: (m: ToWebview) => void) {
     switch (msg.type) {
       case 'ready':

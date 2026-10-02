@@ -1,10 +1,10 @@
-// Shared "Air GitHub" output channel.
+// Shared "Islet" output channel.
 import * as vscode from 'vscode';
 
 let channel: vscode.LogOutputChannel | undefined;
 
 export function initLog(): vscode.LogOutputChannel {
-  channel ??= vscode.window.createOutputChannel('Air GitHub', { log: true });
+  channel ??= vscode.window.createOutputChannel('Islet', { log: true });
   return channel;
 }
 

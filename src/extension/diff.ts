@@ -1,9 +1,9 @@
-// Read-only file contents at a GitHub ref, served under the "air-github:" scheme for vscode.diff.
+// Read-only file contents at a GitHub ref, served under the "islet:" scheme for vscode.diff.
 import * as vscode from 'vscode';
 import type { TokenProvider } from '../shared/api';
 import { log } from './log';
 
-export const SCHEME = 'air-github';
+export const SCHEME = 'islet';
 
 interface FileQuery {
   owner: string;
@@ -71,7 +71,7 @@ export class GitHubContentProvider implements vscode.TextDocumentContentProvider
           Accept: 'application/vnd.github.raw',
           Authorization: `Bearer ${token}`,
           'X-GitHub-Api-Version': '2022-11-28',
-          'User-Agent': 'air-github-vscode',
+          'User-Agent': 'islet-vscode',
         },
       });
       if (res.ok) return await res.text();

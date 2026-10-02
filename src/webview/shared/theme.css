@@ -1,5 +1,5 @@
 /* Air / Islands design tokens shared by both webviews.
-   Matches the user's VS Code setup: Air dark + Islands panels + Rider syntax palette.
+   Designed to match VS Code with the Air dark theme, Islands-style panels and the Rider syntax palette.
    Every colour in the webviews must come from a token below. */
 
 :root {

@@ -1,11 +1,11 @@
-# Air GitHub — design and build brief
+# Islet — design and build brief
 
 A VS Code extension that shows the GitHub issues and pull requests of the repository currently
 selected in VS Code's Source Control, styled like JetBrains Air / the Islands UI.
 
 ## Look and feel (Air / Islands)
 
-The user's VS Code already runs Air dark + Islands panels + Rider syntax colours. The webviews must
+It is designed to sit next to VS Code set up with the Air dark theme, Islands-style floating panels and the Rider syntax colours. The webviews must
 feel like part of that, not like a website.
 
 - **Islands.** Content sits in soft rounded panels (`--panel` on `--bg`, 1px `--line` border,

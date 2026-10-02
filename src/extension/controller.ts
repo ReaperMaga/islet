@@ -11,8 +11,8 @@ import { buildHtml, webviewOptions } from './html';
 import { log, showLog } from './log';
 import type { RepoResolver, RepoState } from './repo';
 
-const DETAIL_VIEW_TYPE = 'airGithub.detail';
-export const SIDEBAR_VIEW_ID = 'airGithub.sidebar';
+const DETAIL_VIEW_TYPE = 'islet.detail';
+export const SIDEBAR_VIEW_ID = 'islet.sidebar';
 
 interface Panel {
   key: string;

@@ -1,6 +1,6 @@
 // Messaging between a webview and the extension host.
 // Inside VS Code it uses acquireVsCodeApi(). In a plain browser (dev preview pages in dev/)
-// it falls back to window.__airMock, provided by dist/mock.js.
+// it falls back to window.__isletMock, provided by dist/mock.js.
 
 import type { ToExtension, ToWebview } from '../../shared/protocol';
 import { uid } from './ui';
@@ -14,7 +14,7 @@ interface VsCodeApi {
 declare global {
   interface Window {
     acquireVsCodeApi?: () => VsCodeApi;
-    __airMock?: { post(msg: ToExtension, reply: (m: ToWebview) => void): void };
+    __isletMock?: { post(msg: ToExtension, reply: (m: ToWebview) => void): void };
   }
 }
 
@@ -33,8 +33,8 @@ if (vscode) {
 
 export function post(msg: ToExtension): void {
   if (vscode) vscode.postMessage(msg);
-  else if (window.__airMock) window.__airMock.post(msg, (m) => setTimeout(() => deliver(m), 250));
-  else console.warn('[air-github] no host for message', msg);
+  else if (window.__isletMock) window.__isletMock.post(msg, (m) => setTimeout(() => deliver(m), 250));
+  else console.warn('[islet] no host for message', msg);
 }
 
 export function onMessage(listener: Listener): () => void {
