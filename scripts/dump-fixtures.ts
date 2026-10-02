@@ -10,8 +10,8 @@ import { join } from 'node:path';
 import { createGitHubApi } from '../src/api/github';
 import type { ItemDetail, ItemKind, ItemSummary, ListFilter, PullDetail } from '../src/shared/types';
 
-const OWN_REPO = 'ReaperMaga/findgamestogether';
-const FALLBACK_REPO = 'vitejs/vite';
+// Usage: node dump.mjs [owner/name]. Defaults to a public repo with plenty of issues, PRs, reviews and checks.
+const DEFAULT_REPO = 'vitejs/vite';
 const MAX_BODY = 12_000;
 const MAX_TIMELINE = 40;
 
@@ -44,16 +44,9 @@ async function main() {
   const user = await api.viewer();
   console.log('viewer', user.login);
 
-  const explicit = process.argv[2];
-  let [owner, name] = (explicit ?? OWN_REPO).split('/');
-  let issues = await items(owner, name, 'issue', user.login);
-  let pulls = await items(owner, name, 'pull', user.login);
-  if (!explicit && (issues.length < 6 || pulls.length < 4)) {
-    console.log(`${OWN_REPO} has ${issues.length} issues / ${pulls.length} PRs, using ${FALLBACK_REPO}`);
-    [owner, name] = FALLBACK_REPO.split('/');
-    issues = await items(owner, name, 'issue', user.login);
-    pulls = await items(owner, name, 'pull', user.login);
-  }
+  const [owner, name] = (process.argv[2] ?? DEFAULT_REPO).split('/');
+  const issues = await items(owner, name, 'issue', user.login);
+  const pulls = await items(owner, name, 'pull', user.login);
   console.log(`${owner}/${name}: ${issues.length} issues, ${pulls.length} pulls`);
 
   const details: Record<string, ItemDetail> = {};
