@@ -8,3 +8,4 @@ build.mjs
 .impeccable/**
 DESIGN.md
 dist/mock.js
+docs/**
