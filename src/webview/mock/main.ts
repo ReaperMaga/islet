@@ -2,7 +2,8 @@
 // Serves data from fixtures.json, which scripts/dump-fixtures.ts generates from the real GitHub API.
 
 import type { ToExtension, ToWebview } from '../../shared/protocol';
-import type { ItemDetail, ItemSummary, ListPage, Session, TimelineEntry } from '../../shared/types';
+import type { Session } from '../../shared/protocol';
+import type { ItemDetail, ItemSummary, ListPage, TimelineEntry } from '../../shared/types';
 import fixtures from './fixtures.json';
 
 const data = fixtures as unknown as {
