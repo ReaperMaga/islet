@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/webview/shared/theme.css"
+        ],
+        "createdAt": "2026-10-02T10:48:13.252Z",
+        "reason": "Claude (lead): L157 styles GitHub-rendered markdown blockquotes; a 2px neutral grey left rule is the standard blockquote convention for user-authored content, not an accent card"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "dev/sidebar.html"
+        ],
+        "createdAt": "2026-10-02T10:52:22.911Z",
+        "reason": "Claude (lead): the only looping translateX is the sidebar's indeterminate loading bar (sidebar.css @keyframes progress), shown while a list request is in flight; disabled under prefers-reduced-motion by theme.css"
+      }
+    ]
+  }
+}

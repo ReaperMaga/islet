@@ -1,27 +1,2556 @@
 {
-  "session": {
-    "signedIn": true,
-    "user": { "login": "octocat", "avatarUrl": "https://avatars.githubusercontent.com/u/583231?v=4", "url": "https://github.com/octocat" },
-    "repo": { "owner": "octocat", "name": "hello-world", "url": "https://github.com/octocat/hello-world", "rootPath": "C:/repo", "currentBranch": "main" }
+ "session": {
+  "signedIn": true,
+  "user": {
+   "login": "ReaperMaga",
+   "avatarUrl": "https://avatars.githubusercontent.com/u/25954039?u=154bd31fbe9e4dfaa10c58b07f47ba598cabe81e&v=4",
+   "url": "https://github.com/ReaperMaga"
   },
-  "issues": [
+  "repo": {
+   "owner": "vitejs",
+   "name": "vite",
+   "url": "https://github.com/vitejs/vite",
+   "rootPath": "C:/dev/vite",
+   "currentBranch": "main"
+  }
+ },
+ "issues": [
+  {
+   "kind": "issue",
+   "number": 4790,
+   "title": "Dependency Dashboard",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "renovate",
+    "avatarUrl": "https://avatars.githubusercontent.com/in/2740?v=4",
+    "url": "https://github.com/apps/renovate"
+   },
+   "createdAt": "2021-08-30T09:18:56Z",
+   "updatedAt": "2026-10-02T07:20:18Z",
+   "commentCount": 1,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/4790"
+  },
+  {
+   "kind": "issue",
+   "number": 23628,
+   "title": "Stylesheet links missing from HTML entries that share a cyclic chunk",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "gkurt",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/6034931?u=435f4aad9d04c361f8380b724d57638724428d0a&v=4",
+    "url": "https://github.com/gkurt"
+   },
+   "createdAt": "2026-10-01T17:59:37Z",
+   "updatedAt": "2026-10-01T17:59:37Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23628"
+  },
+  {
+   "kind": "issue",
+   "number": 23626,
+   "title": "Dev server: project inside a .git directory gets 403 and no HMR",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "cainrus",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/416847?u=e16916d790d0a173a427aca62a98602f0dbc5c6b&v=4",
+    "url": "https://github.com/cainrus"
+   },
+   "createdAt": "2026-10-01T15:15:13Z",
+   "updatedAt": "2026-10-01T15:15:13Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23626"
+  },
+  {
+   "kind": "issue",
+   "number": 23195,
+   "title": "Dev CSS sourcemaps: `sources` are written against the wrong base",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "h-a-n-a",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+    "url": "https://github.com/h-a-n-a"
+   },
+   "createdAt": "2026-08-07T11:47:32Z",
+   "updatedAt": "2026-10-01T13:15:19Z",
+   "commentCount": 4,
+   "labels": [
     {
-      "kind": "issue", "number": 12, "title": "Placeholder issue: replace with scripts/dump-fixtures.ts output", "state": "open", "isDraft": false,
-      "author": { "login": "octocat", "avatarUrl": "https://avatars.githubusercontent.com/u/583231?v=4", "url": "https://github.com/octocat" },
-      "createdAt": "2026-09-28T10:00:00Z", "updatedAt": "2026-10-01T10:00:00Z", "commentCount": 3,
-      "labels": [{ "name": "bug", "color": "d73a4a" }, { "name": "enhancement", "color": "a2eeef" }],
-      "assignees": [], "url": "https://github.com/octocat/hello-world/issues/12"
-    }
-  ],
-  "pulls": [
+     "name": "p3-minor-bug",
+     "color": "BF4D31",
+     "description": "An edge case that only affects very specific usage (priority)"
+    },
     {
-      "kind": "pull", "number": 13, "title": "Placeholder pull request", "state": "open", "isDraft": false,
-      "author": { "login": "octocat", "avatarUrl": "https://avatars.githubusercontent.com/u/583231?v=4", "url": "https://github.com/octocat" },
-      "createdAt": "2026-09-30T10:00:00Z", "updatedAt": "2026-10-02T09:00:00Z", "commentCount": 1,
-      "labels": [{ "name": "feature", "color": "0e8a16" }],
-      "assignees": [], "url": "https://github.com/octocat/hello-world/pull/13",
-      "reviewDecision": "REVIEW_REQUIRED", "checks": "PENDING", "headRef": "feature/x", "baseRef": "main"
+     "name": "feat: sourcemap",
+     "color": "C0F7A9",
+     "description": "Sourcemap support"
     }
-  ],
-  "details": {}
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23195"
+  },
+  {
+   "kind": "issue",
+   "number": 23588,
+   "title": "New Vite SVG logo renders incorrectly in WebKit",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "ChisakaKanako",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/103566952?u=88d50f95327e66e0b0f6ec7a6ccd2b8d7ff66d95&v=4",
+    "url": "https://github.com/ChisakaKanako"
+   },
+   "createdAt": "2026-09-25T19:02:27Z",
+   "updatedAt": "2026-10-01T12:21:50Z",
+   "commentCount": 7,
+   "labels": [
+    {
+     "name": "pending triage",
+     "color": "B3C4DD",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23588"
+  },
+  {
+   "kind": "issue",
+   "number": 23622,
+   "title": "Subpath imports containing second `#` like `##/*` fail to resolve",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "alecgibson",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/12036746?u=a5d1821d8f0d8d2afc3e0f36300047f3b062ae65&v=4",
+    "url": "https://github.com/alecgibson"
+   },
+   "createdAt": "2026-10-01T10:01:50Z",
+   "updatedAt": "2026-10-01T10:03:17Z",
+   "commentCount": 0,
+   "labels": [
+    {
+     "name": "pending triage",
+     "color": "B3C4DD",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23622"
+  },
+  {
+   "kind": "issue",
+   "number": 23620,
+   "title": "Dev server returns 403 for files with colon (:) in their path on Linux and macOS",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "ragulka",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/593267?u=dd8e4d7e6dbe1a3504550efbcd0bbc6290a5e360&v=4",
+    "url": "https://github.com/ragulka"
+   },
+   "createdAt": "2026-10-01T07:27:52Z",
+   "updatedAt": "2026-10-01T07:27:52Z",
+   "commentCount": 0,
+   "labels": [
+    {
+     "name": "pending triage",
+     "color": "B3C4DD",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23620"
+  },
+  {
+   "kind": "issue",
+   "number": 23493,
+   "title": "Dev server restarts retain retired environments through options.previousEnvironments",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "jav-ed",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/47569896?u=cc046366585ae1b5057ec070c0de0d20c80b8481&v=4",
+    "url": "https://github.com/jav-ed"
+   },
+   "createdAt": "2026-09-15T15:36:06Z",
+   "updatedAt": "2026-10-01T05:51:40Z",
+   "commentCount": 2,
+   "labels": [
+    {
+     "name": "p2-nice-to-have",
+     "color": "f4b7ff",
+     "description": "Not breaking anything but nice to have (priority)"
+    },
+    {
+     "name": "performance",
+     "color": "24D9D7",
+     "description": "Performance related enhancement"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23493"
+  },
+  {
+   "kind": "issue",
+   "number": 22435,
+   "title": "Vite 8 breaks backbone-relational",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "tyilo",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/568036?v=4",
+    "url": "https://github.com/tyilo"
+   },
+   "createdAt": "2026-05-12T07:56:01Z",
+   "updatedAt": "2026-10-01T02:20:04Z",
+   "commentCount": 3,
+   "labels": [
+    {
+     "name": "wontfix",
+     "color": "ffffff",
+     "description": "This will not be worked on"
+    },
+    {
+     "name": "has workaround",
+     "color": "4049ad",
+     "description": ""
+    },
+    {
+     "name": "p2-edge-case",
+     "color": "A16B15",
+     "description": "Bug, but has workaround or limited in scope (priority)"
+    },
+    {
+     "name": "regression",
+     "color": "2B0472",
+     "description": "The issue only appears after a new release"
+    },
+    {
+     "name": "inconsistency",
+     "color": "CCE2A5",
+     "description": "Inconsistency between dev & build"
+    },
+    {
+     "name": "feat: deps optimizer",
+     "color": "2EA590",
+     "description": "Dependencies Optimization"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/22435"
+  },
+  {
+   "kind": "issue",
+   "number": 16155,
+   "title": "Cannot use import subpaths in css `url()` paths",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "IanVS",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/4616705?u=b33501ef2cd955dd3cfbd63e4208ed02b0d6a46e&v=4",
+    "url": "https://github.com/IanVS"
+   },
+   "createdAt": "2024-03-13T17:44:22Z",
+   "updatedAt": "2026-10-01T02:06:58Z",
+   "commentCount": 6,
+   "labels": [
+    {
+     "name": "feat: css",
+     "color": "6235f4",
+     "description": ""
+    },
+    {
+     "name": "p2-to-be-discussed",
+     "color": "9670D5",
+     "description": "Enhancement under consideration (priority)"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/16155"
+  },
+  {
+   "kind": "issue",
+   "number": 23470,
+   "title": "Dev server crashes the whole process when the file watcher emits an error (uncaught 'error' event, e.g. EBUSY on Windows)",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "MaxenceMouchard",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/37546363?v=4",
+    "url": "https://github.com/MaxenceMouchard"
+   },
+   "createdAt": "2026-09-11T10:37:02Z",
+   "updatedAt": "2026-10-01T01:08:40Z",
+   "commentCount": 3,
+   "labels": [
+    {
+     "name": "p2-edge-case",
+     "color": "A16B15",
+     "description": "Bug, but has workaround or limited in scope (priority)"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23470"
+  },
+  {
+   "kind": "issue",
+   "number": 11157,
+   "title": "URL with `import.meta.url` fails with template string and nonexistent asset",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "Toilal",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/1165758?v=4",
+    "url": "https://github.com/Toilal"
+   },
+   "createdAt": "2022-12-02T16:35:37Z",
+   "updatedAt": "2026-10-01T00:39:40Z",
+   "commentCount": 3,
+   "labels": [
+    {
+     "name": "pending triage",
+     "color": "B3C4DD",
+     "description": ""
+    },
+    {
+     "name": "has workaround",
+     "color": "4049ad",
+     "description": ""
+    }
+   ],
+   "assignees": [
+    {
+     "login": "shulaoda",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/165626830?u=3ea0406a912adab2df62f24817ae865704957088&v=4",
+     "url": "https://github.com/shulaoda"
+    }
+   ],
+   "url": "https://github.com/vitejs/vite/issues/11157"
+  },
+  {
+   "kind": "issue",
+   "number": 19074,
+   "title": "plugin-legacy: allow excluding polyfills",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "jxn-30",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/27238105?u=b4596858f73fcc99e1680478ca9e4f45bbed3e5b&v=4",
+    "url": "https://github.com/jxn-30"
+   },
+   "createdAt": "2024-12-25T23:14:52Z",
+   "updatedAt": "2026-09-30T06:57:43Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "pending triage",
+     "color": "B3C4DD",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/19074"
+  },
+  {
+   "kind": "issue",
+   "number": 23608,
+   "title": "HMR intermittently fails, with failure probability increasing as the .vue file size grows when saved in VS Code",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "fullmooooon",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/43309591?u=e84c560d8ca3a742e93ef3494691acee0a6d66d1&v=4",
+    "url": "https://github.com/fullmooooon"
+   },
+   "createdAt": "2026-09-29T06:59:34Z",
+   "updatedAt": "2026-09-30T06:49:25Z",
+   "commentCount": 2,
+   "labels": [
+    {
+     "name": "pending triage",
+     "color": "B3C4DD",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23608"
+  },
+  {
+   "kind": "issue",
+   "number": 23512,
+   "title": "Avoid browser-external warnings for imports explicitly disabled by browser mappings",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "ciampo",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/1083581?u=a6fc24b9979ef7efb2215a597c3dcbad22fa3660&v=4",
+    "url": "https://github.com/ciampo"
+   },
+   "createdAt": "2026-09-17T16:17:18Z",
+   "updatedAt": "2026-09-30T04:14:02Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23512"
+  },
+  {
+   "kind": "issue",
+   "number": 23178,
+   "title": "`renderBuiltUrl` appending a query string to CSS modulepreload deps breaks the runtime `.css` classification",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "emiliosheinz",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/103655828?u=f773e7f0a6438df1be161a579ce9c9f9e5ba6156&v=4",
+    "url": "https://github.com/emiliosheinz"
+   },
+   "createdAt": "2026-08-05T18:20:34Z",
+   "updatedAt": "2026-09-30T02:50:46Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "p2-edge-case",
+     "color": "A16B15",
+     "description": "Bug, but has workaround or limited in scope (priority)"
+    },
+    {
+     "name": "feat: build",
+     "color": "1d76db",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23178"
+  },
+  {
+   "kind": "issue",
+   "number": 23487,
+   "title": "Pass filenames including queries to `renderBuiltUrl` like <8.3.0",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "sapphi-red",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+    "url": "https://github.com/sapphi-red"
+   },
+   "createdAt": "2026-09-15T02:48:00Z",
+   "updatedAt": "2026-09-29T10:19:14Z",
+   "commentCount": 0,
+   "labels": [
+    {
+     "name": "p3-downstream-blocker",
+     "color": "F6D61F",
+     "description": "Blocking the downstream ecosystem to work properly (priority)"
+    }
+   ],
+   "assignees": [
+    {
+     "login": "sapphi-red",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+     "url": "https://github.com/sapphi-red"
+    }
+   ],
+   "url": "https://github.com/vitejs/vite/issues/23487"
+  },
+  {
+   "kind": "issue",
+   "number": 23481,
+   "title": "feat: native `cloudflareWorkersPreset` environment preset for workerd / Cloudflare Workers",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "fbwe425",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/321728159?u=2f5d06d795585b9ae490cae37c56cd8ea4963f33&v=4",
+    "url": "https://github.com/fbwe425"
+   },
+   "createdAt": "2026-09-14T02:02:52Z",
+   "updatedAt": "2026-09-29T00:35:40Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23481"
+  },
+  {
+   "kind": "issue",
+   "number": 13355,
+   "title": "Cannot preload workers",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "nstringham",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/44071655?u=af0230b9a82a01c50a4bee228f6c588168bdfd99&v=4",
+    "url": "https://github.com/nstringham"
+   },
+   "createdAt": "2023-05-27T22:51:20Z",
+   "updatedAt": "2026-09-28T00:39:01Z",
+   "commentCount": 7,
+   "labels": [
+    {
+     "name": "feat: html",
+     "color": "094d72",
+     "description": ""
+    },
+    {
+     "name": "p3-minor-bug",
+     "color": "BF4D31",
+     "description": "An edge case that only affects very specific usage (priority)"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/13355"
+  },
+  {
+   "kind": "issue",
+   "number": 23547,
+   "title": "Every dynamic import fails under `experimental.bundledDev` with vite 8.3.0 + rolldown 1.2.9: `__rolldown_runtime__.requestLazy is not a function`",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "yeefun",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/32699979?u=792e6ada9a9eb4b7a126ec48ec6736197b77f908&v=4",
+    "url": "https://github.com/yeefun"
+   },
+   "createdAt": "2026-09-22T02:45:57Z",
+   "updatedAt": "2026-09-27T22:16:14Z",
+   "commentCount": 3,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23547"
+  }
+ ],
+ "pulls": [
+  {
+   "kind": "pull",
+   "number": 21626,
+   "title": "feat: support bundled dev mode in ssr",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "sheremet-va",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/16173870?u=3bc73e9670145323bfd318bc201afa34597aa2b7&v=4",
+    "url": "https://github.com/sheremet-va"
+   },
+   "createdAt": "2026-02-12T11:10:14Z",
+   "updatedAt": "2026-10-02T10:05:48Z",
+   "commentCount": 10,
+   "labels": [
+    {
+     "name": "feat: environment API",
+     "color": "9017C8",
+     "description": "Vite Environment API"
+    },
+    {
+     "name": "trigger: preview",
+     "color": "bfdadc",
+     "description": ""
+    },
+    {
+     "name": "feat: bundled-dev",
+     "color": "5a36a3",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/21626",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "fix/support-full-bundle-mode-in-ssr",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23635,
+   "title": "fix: match default fs.deny and watcher ignore globs relative to root",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "charan-rathore",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/180254320?u=462dfbc833245bf5e9a3188f20a53af889ed5f1b&v=4",
+    "url": "https://github.com/charan-rathore"
+   },
+   "createdAt": "2026-10-02T09:00:06Z",
+   "updatedAt": "2026-10-02T09:04:23Z",
+   "commentCount": 2,
+   "labels": [
+    {
+     "name": "bot: likely",
+     "color": "b60205",
+     "description": "Likely a bot, LLM, or agent. Automatically comments and closes the issue or PR"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23635",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "fix/fs-deny-root-inside-git",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23607,
+   "title": "fix: handle URL-normalized ?raw=/ ?url= and strip ?t= before #fragment (fix #22060, fix #23390)",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "sai4u-dev",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/190860569?u=57729109ba3b1260467e4b30a7abe7281c4476e8&v=4",
+    "url": "https://github.com/sai4u-dev"
+   },
+   "createdAt": "2026-09-28T12:20:10Z",
+   "updatedAt": "2026-10-02T08:07:42Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23607",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "main",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23634,
+   "title": "fix: skip reading pnpm .modules.yaml during build",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "lifeiscontent",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/180963?u=af9376247f33ffd7a143b635fa57b3b28f8c03c3&v=4",
+    "url": "https://github.com/lifeiscontent"
+   },
+   "createdAt": "2026-10-02T07:51:06Z",
+   "updatedAt": "2026-10-02T07:51:06Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23634",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "fix/pnpm-modules-yaml",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23323,
+   "title": "feat: support a native module runner in full bundle mode",
+   "state": "open",
+   "isDraft": true,
+   "author": {
+    "login": "sheremet-va",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/16173870?u=3bc73e9670145323bfd318bc201afa34597aa2b7&v=4",
+    "url": "https://github.com/sheremet-va"
+   },
+   "createdAt": "2026-08-21T16:17:18Z",
+   "updatedAt": "2026-10-02T07:49:36Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23323",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "feat/native-module-runner",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 18615,
+   "title": "fix(css): `config.build` should be obtained from the current environment rather than from the top-level config",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "Jonny-china",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/31563977?u=9cb5725707a253f857d8a3986eb19cf60ae5f09c&v=4",
+    "url": "https://github.com/Jonny-china"
+   },
+   "createdAt": "2024-11-07T16:47:52Z",
+   "updatedAt": "2026-10-02T07:19:17Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/18615",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": null,
+   "headRef": "fix/css-enviroment-config",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23633,
+   "title": "fix: preserve stylesheet links in CSS cycles (fix #23628)",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "GreedyC",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/62262441?v=4",
+    "url": "https://github.com/GreedyC"
+   },
+   "createdAt": "2026-10-02T04:10:40Z",
+   "updatedAt": "2026-10-02T04:12:18Z",
+   "commentCount": 2,
+   "labels": [
+    {
+     "name": "bot: likely",
+     "color": "b60205",
+     "description": "Likely a bot, LLM, or agent. Automatically comments and closes the issue or PR"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23633",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "codex/fix-css-cycle-cache",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23632,
+   "title": "FIX: Preserve stylesheet links in CSS cycles (fix #23628)",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "GreedyC",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/62262441?v=4",
+    "url": "https://github.com/GreedyC"
+   },
+   "createdAt": "2026-10-02T04:06:08Z",
+   "updatedAt": "2026-10-02T04:06:28Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "bot: likely",
+     "color": "b60205",
+     "description": "Likely a bot, LLM, or agent. Automatically comments and closes the issue or PR"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23632",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "codex/fix-css-cycle-cache",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23631,
+   "title": "fix(resolve): support subpath imports with multiple `#`",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "btea",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/24516654?u=770b9622d0640c7afca868cdeea74f2b8fb93af4&v=4",
+    "url": "https://github.com/btea"
+   },
+   "createdAt": "2026-10-02T01:34:58Z",
+   "updatedAt": "2026-10-02T01:51:55Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23631",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "fix/subpath-imports-multiple-hash",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23630,
+   "title": "fix: missing stylesheet links in CSS cycles (fix #23628)",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "GreedyC",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/62262441?v=4",
+    "url": "https://github.com/GreedyC"
+   },
+   "createdAt": "2026-10-01T21:55:09Z",
+   "updatedAt": "2026-10-01T21:55:30Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "bot: likely",
+     "color": "b60205",
+     "description": "Likely a bot, LLM, or agent. Automatically comments and closes the issue or PR"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23630",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "codex/fix-css-cycle-cache",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23629,
+   "title": "fix: missing stylesheet links in CSS cycles (fix #23628)",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "GreedyC",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/62262441?v=4",
+    "url": "https://github.com/GreedyC"
+   },
+   "createdAt": "2026-10-01T21:54:05Z",
+   "updatedAt": "2026-10-01T21:54:30Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "bot: likely",
+     "color": "b60205",
+     "description": "Likely a bot, LLM, or agent. Automatically comments and closes the issue or PR"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23629",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "codex/fix-css-cycle-cache",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 21880,
+   "title": "chore(deps): update eslint monorepo to v10",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "renovate",
+    "avatarUrl": "https://avatars.githubusercontent.com/in/2740?v=4",
+    "url": "https://github.com/apps/renovate"
+   },
+   "createdAt": "2026-03-16T02:29:45Z",
+   "updatedAt": "2026-10-01T18:24:34Z",
+   "commentCount": 0,
+   "labels": [
+    {
+     "name": "dependencies",
+     "color": "0366d6",
+     "description": "Pull requests that update a dependency file"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/21880",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "renovate/major-eslint-monorepo",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23614,
+   "title": "fix(worker): align worker urls in client and server when using terser",
+   "state": "merged",
+   "isDraft": false,
+   "author": {
+    "login": "BPScott",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/227292?v=4",
+    "url": "https://github.com/BPScott"
+   },
+   "createdAt": "2026-09-30T06:13:46Z",
+   "updatedAt": "2026-10-01T16:59:47Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "feat: ssr",
+     "color": "F1BBCF",
+     "description": ""
+    },
+    {
+     "name": "p2-edge-case",
+     "color": "A16B15",
+     "description": "Bug, but has workaround or limited in scope (priority)"
+    },
+    {
+     "name": "feat: web workers",
+     "color": "BC6109",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23614",
+   "reviewDecision": "APPROVED",
+   "checks": "FAILURE",
+   "headRef": "fix-worker-urls-with-terser",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23627,
+   "title": "fix(worker): preserve emitted sourcemap assets",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "jav-ed",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/47569896?u=cc046366585ae1b5057ec070c0de0d20c80b8481&v=4",
+    "url": "https://github.com/jav-ed"
+   },
+   "createdAt": "2026-10-01T15:20:16Z",
+   "updatedAt": "2026-10-01T15:20:16Z",
+   "commentCount": 0,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23627",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "codex/preserve-worker-sourcemap-assets",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23503,
+   "title": "fix(server): handle file watcher errors without crashing",
+   "state": "merged",
+   "isDraft": false,
+   "author": {
+    "login": "kingmakeruix",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/300409226?u=4ee74d1890f32d76db6c005d527eafcdce2eb862&v=4",
+    "url": "https://github.com/kingmakeruix"
+   },
+   "createdAt": "2026-09-17T08:29:08Z",
+   "updatedAt": "2026-10-01T12:56:04Z",
+   "commentCount": 0,
+   "labels": [
+    {
+     "name": "p2-edge-case",
+     "color": "A16B15",
+     "description": "Bug, but has workaround or limited in scope (priority)"
+    },
+    {
+     "name": "feat: dev",
+     "color": "6AC328",
+     "description": "dev server"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23503",
+   "reviewDecision": "APPROVED",
+   "checks": "SUCCESS",
+   "headRef": "fix/watcher-error-no-crash",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23624,
+   "title": "feat: show running process for the same project",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "sapphi-red",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+    "url": "https://github.com/sapphi-red"
+   },
+   "createdAt": "2026-10-01T10:25:25Z",
+   "updatedAt": "2026-10-01T11:01:27Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "trigger: preview",
+     "color": "bfdadc",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23624",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "feat/show-running-process-for-the-same-project",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23625,
+   "title": "fix: resolve subpath imports starting with multiple hashes",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "drakeo338",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/328244157?u=ca1b3a9656bada5b09ae51870d56af9b0d01b61a&v=4",
+    "url": "https://github.com/drakeo338"
+   },
+   "createdAt": "2026-10-01T10:43:00Z",
+   "updatedAt": "2026-10-01T10:43:17Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "bot: likely",
+     "color": "b60205",
+     "description": "Likely a bot, LLM, or agent. Automatically comments and closes the issue or PR"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23625",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "claude/23622-fix",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23563,
+   "title": "feat(cli): add `-e` shorthand for `--experimentalBundle` and `-F` for `--force`",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "btea",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/24516654?u=770b9622d0640c7afca868cdeea74f2b8fb93af4&v=4",
+    "url": "https://github.com/btea"
+   },
+   "createdAt": "2026-09-24T02:16:43Z",
+   "updatedAt": "2026-10-01T04:10:15Z",
+   "commentCount": 3,
+   "labels": [
+    {
+     "name": "p2-to-be-discussed",
+     "color": "9670D5",
+     "description": "Enhancement under consideration (priority)"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23563",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "feat/cli-force-shorthand",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 21483,
+   "title": "fix(client): use trusted types in client runtime when available",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "hybrist",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/567540?u=8c4489cd158bb1a7fffff338fc832359a113955e&v=4",
+    "url": "https://github.com/hybrist"
+   },
+   "createdAt": "2026-01-24T19:38:43Z",
+   "updatedAt": "2026-10-01T00:42:52Z",
+   "commentCount": 0,
+   "labels": [
+    {
+     "name": "p2-to-be-discussed",
+     "color": "9670D5",
+     "description": "Enhancement under consideration (priority)"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/21483",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "tt-shared-worker",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 21492,
+   "title": "chore(deps): update dependency open to v11",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "renovate",
+    "avatarUrl": "https://avatars.githubusercontent.com/in/2740?v=4",
+    "url": "https://github.com/apps/renovate"
+   },
+   "createdAt": "2026-01-26T03:53:24Z",
+   "updatedAt": "2026-10-01T00:32:23Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "dependencies",
+     "color": "0366d6",
+     "description": "Pull requests that update a dependency file"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/21492",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "FAILURE",
+   "headRef": "renovate/open-11.x",
+   "baseRef": "main"
+  },
+  {
+   "kind": "pull",
+   "number": 23502,
+   "title": "perf(bundled-dev): serve an already-built lazy route instead of recompiling it on reload",
+   "state": "open",
+   "isDraft": true,
+   "author": {
+    "login": "h-a-n-a",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+    "url": "https://github.com/h-a-n-a"
+   },
+   "createdAt": "2026-09-17T06:49:37Z",
+   "updatedAt": "2026-09-30T01:32:37Z",
+   "commentCount": 4,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23502",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "fix/lazy-redirect-to-built-chunk",
+   "baseRef": "main"
+  }
+ ],
+ "details": {
+  "issue-23588": {
+   "kind": "issue",
+   "number": 23588,
+   "title": "New Vite SVG logo renders incorrectly in WebKit",
+   "state": "open",
+   "isDraft": false,
+   "author": {
+    "login": "ChisakaKanako",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/103566952?u=88d50f95327e66e0b0f6ec7a6ccd2b8d7ff66d95&v=4",
+    "url": "https://github.com/ChisakaKanako"
+   },
+   "createdAt": "2026-09-25T19:02:27Z",
+   "updatedAt": "2026-10-01T12:21:50Z",
+   "commentCount": 7,
+   "labels": [
+    {
+     "name": "pending triage",
+     "color": "B3C4DD",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/23588",
+   "bodyHTML": "<h3 dir=\"auto\">Describe the bug</h3>\n<p dir=\"auto\">The official Vite light and dark SVG logos can render inconsistently in WebKit when displayed at small icon sizes.</p>\n<p dir=\"auto\">Affected official assets:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://vite.dev/vite-light.svg\" rel=\"nofollow\">https://vite.dev/vite-light.svg</a></li>\n<li><a href=\"https://vite.dev/vite-dark.svg\" rel=\"nofollow\">https://vite.dev/vite-dark.svg</a></li>\n</ul>\n<p dir=\"auto\">These assets were introduced by <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3763392198\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vitejs/vite/issues/21339\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/vitejs/vite/pull/21339/hovercard\" href=\"https://github.com/vitejs/vite/pull/21339\">#21339</a>.</p>\n<p dir=\"auto\">In WebKit 27 on macOS 27, rendering either SVG at approximately 24px height can produce:</p>\n<ul dir=\"auto\">\n<li>A soft or blurry appearance</li>\n<li>Color bleeding around the lightning mark</li>\n<li>Incorrect dark edges or outlines</li>\n<li>Incorrect interpolation around transparent regions</li>\n</ul>\n<p dir=\"auto\">Chrome 153 renders the same files correctly.</p>\n<p dir=\"auto\">The screenshot below shows the worst-case WebKit rendering: the logo is completely incorrect. In ordinary cases, WebKit is usually not this severe, but it still appears noticeably blurrier than Chrome.</p>\n<p dir=\"auto\">WebKit issue screenshot from the downstream VitePress report:</p>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/103566952/659150785-5d8845a0-451c-4e7e-a6f0-8621f1b5406e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii8xMDM1NjY5NTIvNjU5MTUwNzg1LTVkODg0NWEwLTQ1MWMtNGU3ZS1hNmYwLTg2MjFmMWI1NDA2ZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAwMlQxMDUxMDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04YWQxYTkxMGJjY2VhOTNjMmQ2ZTY0MDllNTNmNDVjYTkwYjM5ZDQzYzE1MzRjNjVhYTY3ZDkxNTQ5ZjIzZGExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.YSu4ei9TKrUL4xgt2MD-kXi84CXlfp8_4-CyCofg8iY\"><img width=\"480\" alt=\"Vite logo WebKit rendering issue\" src=\"https://private-user-images.githubusercontent.com/103566952/659150785-5d8845a0-451c-4e7e-a6f0-8621f1b5406e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii8xMDM1NjY5NTIvNjU5MTUwNzg1LTVkODg0NWEwLTQ1MWMtNGU3ZS1hNmYwLTg2MjFmMWI1NDA2ZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAwMlQxMDUxMDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04YWQxYTkxMGJjY2VhOTNjMmQ2ZTY0MDllNTNmNDVjYTkwYjM5ZDQzYzE1MzRjNjVhYTY3ZDkxNTQ5ZjIzZGExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.YSu4ei9TKrUL4xgt2MD-kXi84CXlfp8_4-CyCofg8iY\" style=\"max-width: 100%;\"></a>\n<p dir=\"auto\">The official SVG files contain:</p>\n<ul dir=\"auto\">\n<li>15  elements</li>\n<li>15  effects</li>\n<li>1  element</li>\n<li>viewBox: 0 0 87 15</li>\n</ul>\n<p dir=\"auto\">These filter and mask effects appear to be rasterized differently by WebKit and Chromium.</p>\n<p dir=\"auto\">This also affects downstream consumers. VitePress documented the same issue and applied a raster fallback in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5540529645\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vuejs/vitepress/issues/5466\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/vuejs/vitepress/pull/5466/hovercard\" href=\"https://github.com/vuejs/vitepress/pull/5466\">vuejs/vitepress#5466</a>.</p>\n<h3 dir=\"auto\">Reproduction</h3>\n<p dir=\"auto\"><a href=\"https://htmlpreview.github.io/?https://gist.githubusercontent.com/ChisakaKanako/07226c8cc5558efd1ea7c64cfb553236/raw/index.html\" rel=\"nofollow\">https://htmlpreview.github.io/?https://gist.githubusercontent.com/ChisakaKanako/07226c8cc5558efd1ea7c64cfb553236/raw/index.html</a></p>\n<p dir=\"auto\">Note: <code class=\"notranslate\">htmlpreview.github.io</code> may occasionally fail to render the HTML. The issue can also be tested directly with the official <code class=\"notranslate\">vite-light.svg</code> and <code class=\"notranslate\">vite-dark.svg</code> files at approximately <code class=\"notranslate\">24px</code> height.</p>\n<h3 dir=\"auto\">Steps to reproduce</h3>\n<ol dir=\"auto\">\n<li>Open the reproduction URL in WebKit 27 on macOS 27.</li>\n<li>Display the official Vite light/dark SVG logos at approximately 24px height.</li>\n<li>Compare the rendering with Chrome 153 at the same size.</li>\n<li>Observe the blur, color bleeding, and incorrect edges in WebKit.</li>\n</ol>\n<h3 dir=\"auto\">System Info</h3>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"System:\n  OS: macOS 27.0 (26A428)\n  CPU: Apple M4\n  Memory: 16 GB\n  Shell: zsh 5.9\n\nBrowsers:\n  WebKit: 27.0\n  Chrome: 153.0.8010.53\"><pre class=\"notranslate\">System:\n  OS: macOS 27.0 (26A428)\n  CPU: Apple M4\n  Memory: 16 GB\n  Shell: zsh 5.9\n\nBrowsers:\n  WebKit: 27.0\n  Chrome: 153.0.8010.53</pre></div>\n<h3 dir=\"auto\">Used Package Manager</h3>\n<p dir=\"auto\">npm</p>\n<h3 dir=\"auto\">Logs</h3>\n<p dir=\"auto\">Official Vite logo SVG structure:</p>\n<ul dir=\"auto\">\n<li>filters: 15</li>\n<li>feGaussianBlur: 15</li>\n<li>masks: 1</li>\n<li>viewBox: 0 0 87 15</li>\n</ul>\n<p dir=\"auto\">Downstream workaround and screenshots:<br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5540529645\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vuejs/vitepress/issues/5466\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/vuejs/vitepress/pull/5466/hovercard\" href=\"https://github.com/vuejs/vitepress/pull/5466\">vuejs/vitepress#5466</a></p>\n<p dir=\"auto\">Confirmed solution:</p>\n<ul dir=\"auto\">\n<li>Replace the SVG with pre-rendered image assets, such as PNG or WebP, for small icon usage. This avoids runtime SVG filter and mask processing and produces consistent WebKit/Chromium rendering.</li>\n<li>This is the solution currently used in VitePress PR <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1038824029\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vitejs/vite/issues/5466\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/vitejs/vite/pull/5466/hovercard\" href=\"https://github.com/vitejs/vite/pull/5466\">#5466</a>.</li>\n</ul>\n<p dir=\"auto\">Alternative SVG fix:</p>\n<ul dir=\"auto\">\n<li>Flatten or remove the Gaussian Blur filters and mask from the official SVG so it can render consistently without a raster fallback.</li>\n</ul>\n<h3 dir=\"auto\">Validations</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> Follow our <a href=\"https://github.com/vitejs/.github/blob/main/CODE_OF_CONDUCT.md\">Code of Conduct</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> Read the <a href=\"https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md\">Contributing Guidelines</a>.</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> Read the <a href=\"https://vite.dev/guide\" rel=\"nofollow\">docs</a>.</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> Check that there isn't <a href=\"https://github.com/vitejs/vite/issues\">already an issue</a> that reports the same bug to avoid creating a duplicate.</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> Make sure this is a Vite issue and not a framework-specific issue. For example, if it's a Vue SFC related bug, it should likely be reported to <a href=\"https://github.com/vuejs/core\">vuejs/core</a> instead.</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> Check that this is a concrete bug. For Q&amp;A open a <a href=\"https://github.com/vitejs/vite/discussions\">GitHub Discussion</a> or join our <a href=\"https://chat.vite.dev/\" rel=\"nofollow\">Discord Chat Server</a>.</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> The provided reproduction is a <a href=\"https://stackoverflow.com/help/minimal-reproducible-example\" rel=\"nofollow\">minimal reproducible example</a> of the bug.</li>\n</ul>",
+   "milestone": null,
+   "participants": [
+    {
+     "login": "TheAlexLichter",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/640208?u=8103e364cbb1c0892c0cbe6831eef0dbcb6aff6b&v=4",
+     "url": "https://github.com/TheAlexLichter"
+    },
+    {
+     "login": "bluwy",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+     "url": "https://github.com/bluwy"
+    },
+    {
+     "login": "sapphi-red",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+     "url": "https://github.com/sapphi-red"
+    },
+    {
+     "login": "ChisakaKanako",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/103566952?u=88d50f95327e66e0b0f6ec7a6ccd2b8d7ff66d95&v=4",
+     "url": "https://github.com/ChisakaKanako"
+    },
+    {
+     "login": "neevmodh",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/141932641?u=81e01d3b18225a3bce006cbd47e660449d8cac15&v=4",
+     "url": "https://github.com/neevmodh"
+    }
+   ],
+   "closedAt": null,
+   "timeline": [
+    {
+     "id": "LE_lADOD1jqbs8AAAABTQbGaM8AAAAHau6cUg",
+     "type": "event",
+     "author": {
+      "login": "ChisakaKanako",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/103566952?u=88d50f95327e66e0b0f6ec7a6ccd2b8d7ff66d95&v=4",
+      "url": "https://github.com/ChisakaKanako"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-25T19:02:29Z",
+     "reactions": [],
+     "event": "labeled",
+     "eventDetail": "pending triage",
+     "eventLabel": {
+      "name": "pending triage",
+      "color": "B3C4DD",
+      "description": ""
+     }
+    },
+    {
+     "id": "RTE_lADOD1jqbs8AAAABTQbGaM8AAAAHavOUxg",
+     "type": "event",
+     "author": {
+      "login": "ChisakaKanako",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/103566952?u=88d50f95327e66e0b0f6ec7a6ccd2b8d7ff66d95&v=4",
+      "url": "https://github.com/ChisakaKanako"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-25T19:08:24Z",
+     "reactions": [],
+     "event": "renamed",
+     "eventDetail": "Official Vite light/dark SVG logos render incorrectly in Safari at small sizes → New Vite SVG logo renders incorrectly in Safari"
+    },
+    {
+     "id": "RTE_lADOD1jqbs8AAAABTQbGaM8AAAAHavjNQQ",
+     "type": "event",
+     "author": {
+      "login": "ChisakaKanako",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/103566952?u=88d50f95327e66e0b0f6ec7a6ccd2b8d7ff66d95&v=4",
+      "url": "https://github.com/ChisakaKanako"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-25T19:14:29Z",
+     "reactions": [],
+     "event": "renamed",
+     "eventDetail": "New Vite SVG logo renders incorrectly in Safari → New Vite SVG logo renders incorrectly in WebKit"
+    },
+    {
+     "id": "CRE_kwDOD1jqbs8AAAADDocW3w",
+     "type": "event",
+     "author": {
+      "login": "neevmodh",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/141932641?u=81e01d3b18225a3bce006cbd47e660449d8cac15&v=4",
+      "url": "https://github.com/neevmodh"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-26T08:35:23Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "vitejs/vite#23591 fix: pre-rasterize logo SVGs to avoid WebKit filter/mask rendering bugs",
+     "url": "https://github.com/vitejs/vite/pull/23591"
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABXF6O6Q",
+     "type": "comment",
+     "author": {
+      "login": "neevmodh",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/141932641?u=81e01d3b18225a3bce006cbd47e660449d8cac15&v=4",
+      "url": "https://github.com/neevmodh"
+     },
+     "bodyHTML": "<p dir=\"auto\">A fix is up in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5592613174\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vitejs/vite/issues/23591\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/vitejs/vite/pull/23591/hovercard\" href=\"https://github.com/vitejs/vite/pull/23591\">#23591</a>.</p>\n<p dir=\"auto\"><strong>Fix:</strong> Replaces the filter/mask-heavy source (15 <code class=\"notranslate\">&lt;feGaussianBlur&gt;</code> filters plus an alpha mask) with a single pre-rasterized PNG at 10x the viewBox resolution, embedded via <code class=\"notranslate\">&lt;image&gt;</code>. This is the fallback recommended in this issue and already adopted for the same assets in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5540529645\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vuejs/vitepress/issues/5466\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/vuejs/vitepress/pull/5466/hovercard\" href=\"https://github.com/vuejs/vitepress/pull/5466\">vuejs/vitepress#5466</a>. File paths, extensions, and <code class=\"notranslate\">viewBox</code> are unchanged, so no downstream consumer needs to update anything.</p>\n<p dir=\"auto\"><strong>Testing:</strong> Rendered and visually compared both files before/after — the wordmark and gradient glow are preserved faithfully at the target icon size.</p>",
+     "createdAt": "2026-09-26T08:38:43Z",
+     "url": "https://github.com/vitejs/vite/issues/23588#issuecomment-5844668137",
+     "reactions": [
+      {
+       "content": "THUMBS_UP",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABXs945Q",
+     "type": "comment",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/49056869/660990766-0797172e-0da9-4ba0-ad76-a3d8ede1a7bf.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii80OTA1Njg2OS82NjA5OTA3NjYtMDc5NzE3MmUtMGRhOS00YmEwLWFkNzYtYTNkOGVkZTFhN2JmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDAyVDEwNTEwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTNlYWVkNTczOWY3MGU4YWFlY2MwYzc1YzEwNzc1OTBjYzQyMzkzNTFhODM5YWZlN2EzNzViM2U1N2E3YTUyMTkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.E1bsKRABkP2qSDM1GB16lQwpXwZze040nnKLhZ0dsE8\"><img width=\"1015\" height=\"370\" alt=\"Image\" src=\"https://private-user-images.githubusercontent.com/49056869/660990766-0797172e-0da9-4ba0-ad76-a3d8ede1a7bf.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii80OTA1Njg2OS82NjA5OTA3NjYtMDc5NzE3MmUtMGRhOS00YmEwLWFkNzYtYTNkOGVkZTFhN2JmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDAyVDEwNTEwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTNlYWVkNTczOWY3MGU4YWFlY2MwYzc1YzEwNzc1OTBjYzQyMzkzNTFhODM5YWZlN2EzNzViM2U1N2E3YTUyMTkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.E1bsKRABkP2qSDM1GB16lQwpXwZze040nnKLhZ0dsE8\" style=\"max-width: 100%; height: auto; max-height: 370px;; aspect-ratio: 1015 / 370; background-color: var(--bgColor-muted); border-radius: 6px\" class=\"js-gh-image-fallback\"></a>\n(left is Chrome 154, right is Safari 27)\n<p dir=\"auto\">It looks fine to me. Safari looks slightly blurry, but only slightly. It doesn't look similar to the \"WebKit issue screenshot from the downstream VitePress report\" image you shared.</p>",
+     "createdAt": "2026-09-29T07:23:14Z",
+     "url": "https://github.com/vitejs/vite/issues/23588#issuecomment-5885622501",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABXtE3Ig",
+     "type": "comment",
+     "author": {
+      "login": "ChisakaKanako",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/103566952?u=88d50f95327e66e0b0f6ec7a6ccd2b8d7ff66d95&v=4",
+      "url": "https://github.com/ChisakaKanako"
+     },
+     "bodyHTML": "<blockquote>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/49056869/660990766-0797172e-0da9-4ba0-ad76-a3d8ede1a7bf.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii80OTA1Njg2OS82NjA5OTA3NjYtMDc5NzE3MmUtMGRhOS00YmEwLWFkNzYtYTNkOGVkZTFhN2JmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDAyVDEwNTEwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTNlYWVkNTczOWY3MGU4YWFlY2MwYzc1YzEwNzc1OTBjYzQyMzkzNTFhODM5YWZlN2EzNzViM2U1N2E3YTUyMTkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.E1bsKRABkP2qSDM1GB16lQwpXwZze040nnKLhZ0dsE8\"><img width=\"1015\" height=\"370\" alt=\"Image\" src=\"https://private-user-images.githubusercontent.com/49056869/660990766-0797172e-0da9-4ba0-ad76-a3d8ede1a7bf.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii80OTA1Njg2OS82NjA5OTA3NjYtMDc5NzE3MmUtMGRhOS00YmEwLWFkNzYtYTNkOGVkZTFhN2JmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDAyVDEwNTEwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTNlYWVkNTczOWY3MGU4YWFlY2MwYzc1YzEwNzc1OTBjYzQyMzkzNTFhODM5YWZlN2EzNzViM2U1N2E3YTUyMTkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.E1bsKRABkP2qSDM1GB16lQwpXwZze040nnKLhZ0dsE8\" style=\"max-width: 100%; height: auto; max-height: 370px;; aspect-ratio: 1015 / 370; background-color: var(--bgColor-muted); border-radius: 6px\" class=\"js-gh-image-fallback\"></a>\n(left is Chrome 154, right is Safari 27)\n<p dir=\"auto\">It looks fine to me. Safari looks slightly blurry, but only slightly. It doesn't look similar to the \"WebKit issue screenshot from the downstream VitePress report\" image you shared.</p>\n</blockquote>\n<p dir=\"auto\">Sometimes, that’s the worst rendering result, which usually happens after the window is resized. Generally, WebKit looks like this:<br>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/103566952/660998748-85d51a6a-21d3-4da4-bd78-ec2bbe1f3895.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii8xMDM1NjY5NTIvNjYwOTk4NzQ4LTg1ZDUxYTZhLTIxZDMtNGRhNC1iZDc4LWVjMmJiZTFmMzg5NS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAwMlQxMDUxMDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNGZjODZiZGRmMTA3YWIxMzU3OTI5YTI2ZmFiZjY1MWQ1Njc1ZjdhNGE0ZjkyYzliZGRmNTJlNzhhYjZhYTM3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.vmBwXu-5dqLQMaLULB-XfD4sCLaDJ1jBAYT8AFt9Pgc\"><img src=\"https://private-user-images.githubusercontent.com/103566952/660998748-85d51a6a-21d3-4da4-bd78-ec2bbe1f3895.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii8xMDM1NjY5NTIvNjYwOTk4NzQ4LTg1ZDUxYTZhLTIxZDMtNGRhNC1iZDc4LWVjMmJiZTFmMzg5NS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAwMlQxMDUxMDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jNGZjODZiZGRmMTA3YWIxMzU3OTI5YTI2ZmFiZjY1MWQ1Njc1ZjdhNGE0ZjkyYzliZGRmNTJlNzhhYjZhYTM3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.vmBwXu-5dqLQMaLULB-XfD4sCLaDJ1jBAYT8AFt9Pgc\" alt=\"image\" style=\"max-width: 100%;\"></a><br>\nIt’s not just a little unclear—the entire file is rendered incorrectly. I mean, both situations can trigger this issue, but for this one file, WebKit always displays rendering errors; it doesn’t handle so many SVG effects very well.</p>",
+     "createdAt": "2026-09-29T07:31:32Z",
+     "url": "https://github.com/vitejs/vite/issues/23588#issuecomment-5885736738",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABXvO9pQ",
+     "type": "comment",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "<p dir=\"auto\">ok, I reproduced by opening <a href=\"https://vitepress.dev\" rel=\"nofollow\">https://vitepress.dev</a> multiple times.<br>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/49056869/661113960-2c4f39c9-1783-4f3c-bb46-a5d226f9e7da.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii80OTA1Njg2OS82NjExMTM5NjAtMmM0ZjM5YzktMTc4My00ZjNjLWJiNDYtYTVkMjI2ZjllN2RhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDAyVDEwNTEwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRiMzJjMDUyOGU0YjI5NDA0YzJhOTljZWZkZjY2ZmI4MjFmOGVlZTUwMjA1ZGVlNjI0NTExMjg5YjVjYjA3YzcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.ZFxrwhXNx_VoN4VqlH0kvvCW45FCLcFOhvtoF5bjvPU\"><img width=\"497\" height=\"282\" alt=\"Image\" src=\"https://private-user-images.githubusercontent.com/49056869/661113960-2c4f39c9-1783-4f3c-bb46-a5d226f9e7da.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA5Mzg1NjEsIm5iZiI6MTc5MDkzODI2MSwicGF0aCI6Ii80OTA1Njg2OS82NjExMTM5NjAtMmM0ZjM5YzktMTc4My00ZjNjLWJiNDYtYTVkMjI2ZjllN2RhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDAyVDEwNTEwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRiMzJjMDUyOGU0YjI5NDA0YzJhOTljZWZkZjY2ZmI4MjFmOGVlZTUwMjA1ZGVlNjI0NTExMjg5YjVjYjA3YzcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.ZFxrwhXNx_VoN4VqlH0kvvCW45FCLcFOhvtoF5bjvPU\" style=\"max-width: 100%; height: auto; max-height: 282px;; aspect-ratio: 497 / 282; background-color: var(--bgColor-muted); border-radius: 6px\" class=\"js-gh-image-fallback\"></a></p>\n<p dir=\"auto\">It seems <code class=\"notranslate\">mask=\"url(#SVGgudELdDz)\"</code> part is ignored. This is definitely a bug in Safari / WebKit rather than a difference of rasterization.</p>",
+     "createdAt": "2026-09-29T10:03:47Z",
+     "url": "https://github.com/vitejs/vite/issues/23588#issuecomment-5887999397",
+     "reactions": [
+      {
+       "content": "THUMBS_UP",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABYSOdTQ",
+     "type": "comment",
+     "author": {
+      "login": "bluwy",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+      "url": "https://github.com/bluwy"
+     },
+     "bodyHTML": "<p dir=\"auto\">I'd prefer waiting for WebKit to fix this.</p>",
+     "createdAt": "2026-10-01T04:22:23Z",
+     "url": "https://github.com/vitejs/vite/issues/23588#issuecomment-5924691277",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABYSTT9w",
+     "type": "comment",
+     "author": {
+      "login": "ChisakaKanako",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/103566952?u=88d50f95327e66e0b0f6ec7a6ccd2b8d7ff66d95&v=4",
+      "url": "https://github.com/ChisakaKanako"
+     },
+     "bodyHTML": "<p dir=\"auto\">Sometimes we have to accept that WebKit's support is always a step behind.</p>",
+     "createdAt": "2026-10-01T04:30:31Z",
+     "url": "https://github.com/vitejs/vite/issues/23588#issuecomment-5924770807",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABYWJ87A",
+     "type": "comment",
+     "author": {
+      "login": "TheAlexLichter",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/640208?u=8103e364cbb1c0892c0cbe6831eef0dbcb6aff6b&v=4",
+      "url": "https://github.com/TheAlexLichter"
+     },
+     "bodyHTML": "<p dir=\"auto\">This is <a href=\"https://bugs.webkit.org/show_bug.cgi?id=325131\" rel=\"nofollow\">https://bugs.webkit.org/show_bug.cgi?id=325131</a> or maybe <a href=\"https://bugs.webkit.org/show_bug.cgi?id=282530\" rel=\"nofollow\">https://bugs.webkit.org/show_bug.cgi?id=282530</a> I think?</p>",
+     "createdAt": "2026-10-01T09:39:05Z",
+     "url": "https://github.com/vitejs/vite/issues/23588#issuecomment-5928811756",
+     "reactions": []
+    }
+   ],
+   "viewerCanComment": true
+  },
+  "issue-13355": {
+   "kind": "issue",
+   "number": 13355,
+   "title": "Cannot preload workers",
+   "state": "closed",
+   "isDraft": false,
+   "author": {
+    "login": "nstringham",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/44071655?u=af0230b9a82a01c50a4bee228f6c588168bdfd99&v=4",
+    "url": "https://github.com/nstringham"
+   },
+   "createdAt": "2023-05-27T22:51:20Z",
+   "updatedAt": "2026-09-28T00:39:01Z",
+   "commentCount": 7,
+   "labels": [
+    {
+     "name": "feat: html",
+     "color": "094d72",
+     "description": ""
+    },
+    {
+     "name": "p3-minor-bug",
+     "color": "BF4D31",
+     "description": "An edge case that only affects very specific usage (priority)"
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/issues/13355",
+   "bodyHTML": "<h3 dir=\"auto\">Describe the bug</h3>\n<p dir=\"auto\">When I try to preload a worker like this</p>\n<div class=\"highlight highlight-text-html-basic notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"&lt;link rel=&quot;modulepreload&quot; href=&quot;/worker.js&quot; /&gt;\"><pre class=\"notranslate\"><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">link</span> <span class=\"pl-c1\">rel</span>=\"<span class=\"pl-s\">modulepreload</span>\" <span class=\"pl-c1\">href</span>=\"<span class=\"pl-s\">/worker.js</span>\" <span class=\"pl-kos\">/&gt;</span></pre></div>\n<p dir=\"auto\">I expect</p>\n<div class=\"highlight highlight-text-html-basic notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"&lt;link rel=&quot;modulepreload&quot; href=&quot;/assets/worker-552d510d.js&quot; /&gt;\"><pre class=\"notranslate\"><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">link</span> <span class=\"pl-c1\">rel</span>=\"<span class=\"pl-s\">modulepreload</span>\" <span class=\"pl-c1\">href</span>=\"<span class=\"pl-s\">/assets/worker-552d510d.js</span>\" <span class=\"pl-kos\">/&gt;</span></pre></div>\n<p dir=\"auto\">But actually</p>\n<div class=\"highlight highlight-text-html-basic notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"&lt;link rel=&quot;modulepreload&quot; href=&quot;data:application/javascript;base64,Y29uc29sZS5sb2coJ2hlbGxvIGZyb20gd29ya2VyJyk7DQo=&quot; /&gt;\"><pre class=\"notranslate\"><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">link</span> <span class=\"pl-c1\">rel</span>=\"<span class=\"pl-s\">modulepreload</span>\" <span class=\"pl-c1\">href</span>=\"<span class=\"pl-s\">data:application/javascript;base64,Y29uc29sZS5sb2coJ2hlbGxvIGZyb20gd29ya2VyJyk7DQo=</span>\" <span class=\"pl-kos\">/&gt;</span></pre></div>\n<h3 dir=\"auto\">Reproduction</h3>\n<p dir=\"auto\"><a href=\"https://stackblitz.com/edit/vite-min-to-reproduce-module-preload-worker\" rel=\"nofollow\">https://stackblitz.com/edit/vite-min-to-reproduce-module-preload-worker</a></p>\n<h3 dir=\"auto\">Steps to reproduce</h3>\n<p dir=\"auto\"><code class=\"notranslate\">npm run build</code></p>\n<h3 dir=\"auto\">System Info</h3>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"System:\n    OS: Windows 10 10.0.22621\n    CPU: (12) x64 Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz\n    Memory: 17.04 GB / 31.75 GB\n  Binaries:\n    Node: 18.12.1 - C:\\Program Files\\nodejs\\node.EXE\n    npm: 8.19.2 - C:\\Program Files\\nodejs\\npm.CMD\n  Browsers:\n    Edge: Spartan (44.22621.1702.0), Chromium (113.0.1774.57), ChromiumDev (115.0.1866.1)\n    Internet Explorer: 11.0.22621.1\n  npmPackages:\n    vite: ^4.3.8 =&gt; 4.3.8\"><pre class=\"notranslate\">System:\n    OS: Windows 10 10.0.22621\n    CPU: (12) x64 Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz\n    Memory: 17.04 GB / 31.75 GB\n  Binaries:\n    Node: 18.12.1 - C:<span class=\"pl-cce\">\\P</span>rogram Files<span class=\"pl-cce\">\\n</span>odejs<span class=\"pl-cce\">\\n</span>ode.EXE\n    npm: 8.19.2 - C:<span class=\"pl-cce\">\\P</span>rogram Files<span class=\"pl-cce\">\\n</span>odejs<span class=\"pl-cce\">\\n</span>pm.CMD\n  Browsers:\n    Edge: Spartan (44.22621.1702.0), Chromium (113.0.1774.57), ChromiumDev (115.0.1866.1)\n    Internet Explorer: 11.0.22621.1\n  npmPackages:\n    vite: ^4.3.8 =<span class=\"pl-k\">&gt;</span> 4.3.8</pre></div>\n<h3 dir=\"auto\">Used Package Manager</h3>\n<p dir=\"auto\">npm</p>\n<h3 dir=\"auto\">Logs</h3>\n<details>\n<summary>Click to expand!</summary>\n<p><em>… truncated for fixtures</em></p>",
+   "milestone": null,
+   "participants": [
+    {
+     "login": "tomayac",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/145676?u=d9e4353115d1dcae2ff7be06802522be0a4323df&v=4",
+     "url": "https://github.com/tomayac"
+    },
+    {
+     "login": "bluwy",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+     "url": "https://github.com/bluwy"
+    },
+    {
+     "login": "nstringham",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/44071655?u=af0230b9a82a01c50a4bee228f6c588168bdfd99&v=4",
+     "url": "https://github.com/nstringham"
+    }
+   ],
+   "closedAt": "2026-09-04T10:12:08Z",
+   "timeline": [
+    {
+     "id": "LE_lADOD1jqbs5nDmHwzwAAAAIt11eY",
+     "type": "event",
+     "author": {
+      "login": "nstringham",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/44071655?u=af0230b9a82a01c50a4bee228f6c588168bdfd99&v=4",
+      "url": "https://github.com/nstringham"
+     },
+     "bodyHTML": "",
+     "createdAt": "2023-05-27T22:51:20Z",
+     "reactions": [],
+     "event": "labeled",
+     "eventDetail": "pending triage",
+     "eventLabel": {
+      "name": "pending triage",
+      "color": "B3C4DD",
+      "description": ""
+     }
+    },
+    {
+     "id": "IC_kwDOD1jqbs5dUwrX",
+     "type": "comment",
+     "author": {
+      "login": "bolt-new-by-stackblitz",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/182710?v=4",
+      "url": "https://github.com/apps/bolt-new-by-stackblitz"
+     },
+     "bodyHTML": "<p dir=\"auto\"><a href=\"https://stackblitz.com/~/github.com/vitejs/vite/issues/13355?repros=vite-min-to-reproduce-module-preload-worker\" rel=\"nofollow\"><img src=\"https://camo.githubusercontent.com/ef42df2cc63ac8216b8c1204aea6eab0c1d6b12655c33aa1b3a456eaa08cd074/68747470733a2f2f646576656c6f7065722e737461636b626c69747a2e636f6d2f696d672f6669785f746869735f69737375655f736d616c6c2e737667\" alt=\"Fix this issue in StackBlitz Codeflow\" align=\"left\" width=\"117\" height=\"20\" data-canonical-src=\"https://developer.stackblitz.com/img/fix_this_issue_small.svg\" style=\"max-width: 100%; height: auto; max-height: 20px;; aspect-ratio: 117 / 20; background-color: var(--bgColor-muted); border-radius: 6px\" class=\"js-gh-image-fallback\"></a> <em>Start a new pull request in <a href=\"https://stackblitz.com/~/github.com/vitejs/vite/issues/13355?repros=vite-min-to-reproduce-module-preload-worker\" rel=\"nofollow\">StackBlitz Codeflow</a>.</em></p>\n<ul dir=\"auto\">\n<li><a href=\"https://stackblitz.com/edit/vite-min-to-reproduce-module-preload-worker?issueRepo=vitejs/vite&amp;issueNumber=13355\" rel=\"nofollow\"><strong>vite-min-to-reproduce-module-preload-worker</strong> (Open reproduction)</a></li>\n</ul>",
+     "createdAt": "2023-05-27T22:51:22Z",
+     "url": "https://github.com/vitejs/vite/issues/13355#issuecomment-1565723351",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs5dYQC5",
+     "type": "comment",
+     "author": {
+      "login": "bluwy",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+      "url": "https://github.com/bluwy"
+     },
+     "bodyHTML": "<p dir=\"auto\">Looks like we need to skip inlining it for <code class=\"notranslate\">rel=\"modulepreload\"</code> links. Similar <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1007502590\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vitejs/vite/issues/5098\" data-hovercard-type=\"issue\" data-hovercard-url=\"/vitejs/vite/issues/5098/hovercard\" href=\"https://github.com/vitejs/vite/issues/5098\">#5098</a></p>",
+     "createdAt": "2023-05-29T06:44:52Z",
+     "url": "https://github.com/vitejs/vite/issues/13355#issuecomment-1566638265",
+     "reactions": []
+    },
+    {
+     "id": "UNLE_lADOD1jqbs5nDmHwzwAAAAIuQTuG",
+     "type": "event",
+     "author": {
+      "login": "bluwy",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+      "url": "https://github.com/bluwy"
+     },
+     "bodyHTML": "",
+     "createdAt": "2023-05-29T06:45:02Z",
+     "reactions": [],
+     "event": "unlabeled",
+     "eventDetail": "pending triage",
+     "eventLabel": {
+      "name": "pending triage",
+      "color": "B3C4DD",
+      "description": ""
+     }
+    },
+    {
+     "id": "LE_lADOD1jqbs5nDmHwzwAAAAIuQTuJ",
+     "type": "event",
+     "author": {
+      "login": "bluwy",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+      "url": "https://github.com/bluwy"
+     },
+     "bodyHTML": "",
+     "createdAt": "2023-05-29T06:45:02Z",
+     "reactions": [],
+     "event": "labeled",
+     "eventDetail": "feat: html",
+     "eventLabel": {
+      "name": "feat: html",
+      "color": "094d72",
+      "description": ""
+     }
+    },
+    {
+     "id": "LE_lADOD1jqbs5nDmHwzwAAAAIuQTuL",
+     "type": "event",
+     "author": {
+      "login": "bluwy",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+      "url": "https://github.com/bluwy"
+     },
+     "bodyHTML": "",
+     "createdAt": "2023-05-29T06:45:02Z",
+     "reactions": [],
+     "event": "labeled",
+     "eventDetail": "p3-minor-bug",
+     "eventLabel": {
+      "name": "p3-minor-bug",
+      "color": "BF4D31",
+      "description": "An edge case that only affects very specific usage (priority)"
+     }
+    },
+    {
+     "id": "IC_kwDOD1jqbs5dZxEW",
+     "type": "comment",
+     "author": {
+      "login": "nstringham",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/44071655?u=af0230b9a82a01c50a4bee228f6c588168bdfd99&v=4",
+      "url": "https://github.com/nstringham"
+     },
+     "bodyHTML": "<blockquote>\n<p dir=\"auto\">Looks like we need to skip inlining it for <code class=\"notranslate\">rel=\"modulepreload\"</code> links. Similar <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1007502590\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vitejs/vite/issues/5098\" data-hovercard-type=\"issue\" data-hovercard-url=\"/vitejs/vite/issues/5098/hovercard\" href=\"https://github.com/vitejs/vite/issues/5098\">#5098</a></p>\n</blockquote>\n<p dir=\"auto\">That's part of it but if you look at the file it inlined it's the original (not minified). This becomes even more obvious in a typescript project where it inlines the typescript file before compiling it. I think it is trying to load it as an asset when it should be a chunk.</p>",
+     "createdAt": "2023-05-29T11:51:17Z",
+     "url": "https://github.com/vitejs/vite/issues/13355#issuecomment-1567035670",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs5deGN6",
+     "type": "comment",
+     "author": {
+      "login": "nstringham",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/44071655?u=af0230b9a82a01c50a4bee228f6c588168bdfd99&v=4",
+      "url": "https://github.com/nstringham"
+     },
+     "bodyHTML": "<p dir=\"auto\">As a workaround I wrote a plugin to inject the module preload tags but I think this workaround probably only works for SPAs.<br>\n<a class=\"commit-link\" data-hovercard-type=\"commit\" data-hovercard-url=\"https://github.com/nstringham/othello-web-app/commit/942e70a5892e386c60035790a474ba22ef05d30f/hovercard\" href=\"https://github.com/nstringham/othello-web-app/commit/942e70a5892e386c60035790a474ba22ef05d30f\">nstringham/othello-web-app@<tt>942e70a</tt></a></p>",
+     "createdAt": "2023-05-30T10:14:26Z",
+     "url": "https://github.com/vitejs/vite/issues/13355#issuecomment-1568170874",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs5djVu-",
+     "type": "comment",
+     "author": {
+      "login": "bluwy",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+      "url": "https://github.com/bluwy"
+     },
+     "bodyHTML": "<p dir=\"auto\">I don't think inlining would work with <code class=\"notranslate\">rel=\"modulepreload\"</code> so I'm not sure how that's related to this. It <em>is</em> an issue though (<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1358759360\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vitejs/vite/issues/9952\" data-hovercard-type=\"issue\" data-hovercard-url=\"/vitejs/vite/issues/9952/hovercard\" href=\"https://github.com/vitejs/vite/issues/9952\">#9952</a>)</p>",
+     "createdAt": "2023-05-31T06:00:25Z",
+     "url": "https://github.com/vitejs/vite/issues/13355#issuecomment-1569545150",
+     "reactions": []
+    },
+    {
+     "id": "CRE_kwDOD1jqbs5RpcKF",
+     "type": "event",
+     "author": {
+      "login": "tomayac",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/145676?u=d9e4353115d1dcae2ff7be06802522be0a4323df&v=4",
+      "url": "https://github.com/tomayac"
+     },
+     "bodyHTML": "",
+     "createdAt": "2024-03-25T16:26:45Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "vitejs/vite#16269 Manual `<link rel=modulepreload>` causes duplication",
+     "url": "https://github.com/vitejs/vite/issues/16269"
+    },
+    {
+     "id": "IC_kwDOD1jqbs54TnVC",
+     "type": "comment",
+     "author": {
+      "login": "tomayac",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/145676?u=d9e4353115d1dcae2ff7be06802522be0a4323df&v=4",
+      "url": "https://github.com/tomayac"
+     },
+     "bodyHTML": "<p dir=\"auto\">Just filed <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2206159364\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vitejs/vite/issues/16269\" data-hovercard-type=\"issue\" data-hovercard-url=\"/vitejs/vite/issues/16269/hovercard\" href=\"https://github.com/vitejs/vite/issues/16269\">#16269</a> since this problem seems to affect <code class=\"notranslate\">rel=modulepreload</code> in general, not just with module workers.</p>",
+     "createdAt": "2024-03-25T16:27:59Z",
+     "url": "https://github.com/vitejs/vite/issues/13355#issuecomment-2018407746",
+     "reactions": []
+    },
+    {
+     "id": "CRE_kwDONXb-685qh8XN",
+     "type": "event",
+     "author": {
+      "login": "giacomoran",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/8596184?u=3d6f205784842c07675ea87f9536ea45ad4b7739&v=4",
+      "url": "https://github.com/giacomoran"
+     },
+     "bodyHTML": "",
+     "createdAt": "2024-12-06T17:04:38Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "rember/anki-wrapped#5 Worker scirpts are not preloaded, prevents app from being used offline",
+     "url": "https://github.com/rember/anki-wrapped/issues/5"
+    },
+    {
+     "id": "CRE_kwDOD1jqbs8AAAACeNl0GQ",
+     "type": "event",
+     "author": {
+      "login": "kakiuwang-ui",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/229876677?u=ad9f3f4a96630393f71694d261d7e24aa2a692cb&v=4",
+      "url": "https://github.com/kakiuwang-ui"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-08-27T15:30:45Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "vitejs/vite#23387 fix(html): don't inline preload link targets (fix #13355)",
+     "url": "https://github.com/vitejs/vite/pull/23387"
+    },
+    {
+     "id": "CE_lADOD1jqbs5nDmHwzwAAAAccusTQ",
+     "type": "event",
+     "author": {
+      "login": "bluwy",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34116392?u=b156c6773cb1d21bf37c99bd427486ce73b2173d&v=4",
+      "url": "https://github.com/bluwy"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-04T10:12:08Z",
+     "reactions": [],
+     "event": "closed",
+     "eventDetail": "via #23387"
+    },
+    {
+     "id": "CRE_kwDOD1jqbs8AAAACpmbUiw",
+     "type": "event",
+     "author": {
+      "login": "github-actions",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "url": "https://github.com/apps/github-actions"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-07T11:24:36Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "vitejs/vite#23449 release: v8.3.0-beta.1",
+     "url": "https://github.com/vitejs/vite/pull/23449"
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABUQ_HTA",
+     "type": "comment",
+     "author": {
+      "login": "nstringham",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/44071655?u=af0230b9a82a01c50a4bee228f6c588168bdfd99&v=4",
+      "url": "https://github.com/nstringham"
+     },
+     "bodyHTML": "<p dir=\"auto\">It seams like there were 2 bugs going on here:</p>\n<ol dir=\"auto\">\n<li>the module preload is in-lined (fixed)</li>\n<li>the module preload is loaded as an asset rather than a chunk (not fixed)</li>\n</ol>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/tomayac/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/tomayac\">@tomayac</a> should this issue be reopened or should I make a new issue?</p>",
+     "createdAt": "2026-09-13T17:43:12Z",
+     "url": "https://github.com/vitejs/vite/issues/13355#issuecomment-5654955852",
+     "reactions": []
+    },
+    {
+     "id": "CRE_kwDORmQobs8AAAAC1DIFLg",
+     "type": "event",
+     "author": {
+      "login": "github-actions",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "url": "https://github.com/apps/github-actions"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-16T03:10:45Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "sudocarlos/tailrelay#130 chore: update Vite from 8.2.2 to 8.3.0",
+     "url": "https://github.com/sudocarlos/tailrelay/issues/130"
+    },
+    {
+     "id": "CRE_kwDORmQobs8AAAAC1D1Z5Q",
+     "type": "event",
+     "author": {
+      "login": "github-actions",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "url": "https://github.com/apps/github-actions"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-16T03:23:27Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "sudocarlos/tailrelay#132 chore: update Vite from 8.2.2 to 8.3.0",
+     "url": "https://github.com/sudocarlos/tailrelay/pull/132"
+    }
+   ],
+   "viewerCanComment": false
+  },
+  "pull-23614": {
+   "kind": "pull",
+   "number": 23614,
+   "title": "fix(worker): align worker urls in client and server when using terser",
+   "state": "merged",
+   "isDraft": false,
+   "author": {
+    "login": "BPScott",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/227292?v=4",
+    "url": "https://github.com/BPScott"
+   },
+   "createdAt": "2026-09-30T06:13:46Z",
+   "updatedAt": "2026-10-01T16:59:47Z",
+   "commentCount": 1,
+   "labels": [
+    {
+     "name": "feat: ssr",
+     "color": "F1BBCF",
+     "description": ""
+    },
+    {
+     "name": "p2-edge-case",
+     "color": "A16B15",
+     "description": "Bug, but has workaround or limited in scope (priority)"
+    },
+    {
+     "name": "feat: web workers",
+     "color": "BC6109",
+     "description": ""
+    }
+   ],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23614",
+   "reviewDecision": "APPROVED",
+   "checks": "FAILURE",
+   "headRef": "fix-worker-urls-with-terser",
+   "baseRef": "main",
+   "bodyHTML": "<p dir=\"auto\">Worker urls generated in the server build must match the filenames created in the client build. This worked with the default minifier, but did not work when explicitly using terser as the minifier for client builds. This was because the terser plugin did not read its minification options from the per-environment config.</p>\n<p dir=\"auto\">This PR updates the terser plugin to read from the per-environment config rather than the top-level config.</p>\n<p dir=\"auto\">Review with whitespace disabled - most of the change is reformatting of the test case.</p>\n<hr>\n<p dir=\"auto\">See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4078641510\" data-permission-text=\"Title is private\" data-url=\"https://github.com/vitejs/vite/issues/21871\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/vitejs/vite/pull/21871/hovercard\" href=\"https://github.com/vitejs/vite/pull/21871\">#21871</a> for prior art that fixed a regression in this behaviour when using the default minifier.</p>\n<p dir=\"auto\">I found this bug in v7.3.5, but I'm not expecting a backport. (for now I'm applying this change as a patch-package while I work through the Vite 8 update).</p>\n<p dir=\"auto\">AI Disclosure: I used Claude to identify this problem, and author the fix and test case. Code has been reviewed by me, and the commit message / PR description is human authored.</p>",
+   "milestone": null,
+   "participants": [
+    {
+     "login": "BPScott",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/227292?v=4",
+     "url": "https://github.com/BPScott"
+    },
+    {
+     "login": "sapphi-red",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+     "url": "https://github.com/sapphi-red"
+    }
+   ],
+   "closedAt": "2026-10-01T09:34:12Z",
+   "timeline": [
+    {
+     "id": "RTE_lADOD1jqbs8AAAABUEh2fc8AAAAHe6xcNA",
+     "type": "event",
+     "author": {
+      "login": "BPScott",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/227292?v=4",
+      "url": "https://github.com/BPScott"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-30T06:15:17Z",
+     "reactions": [],
+     "event": "renamed",
+     "eventDetail": "fix(worker): Align worker urls in client and server when using terser → fix(worker): align worker urls in client and server when using terser"
+    },
+    {
+     "id": "HRFPE_lADOD1jqbs8AAAABUEh2fc8AAAAHe60xPw",
+     "type": "event",
+     "author": {
+      "login": "BPScott",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/227292?v=4",
+      "url": "https://github.com/BPScott"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-30T06:16:20Z",
+     "reactions": [],
+     "event": "head_ref_force_pushed",
+     "eventDetail": "e8e8743"
+    },
+    {
+     "id": "HRFPE_lADOD1jqbs8AAAABUEh2fc8AAAAHgB9YYA",
+     "type": "event",
+     "author": {
+      "login": "BPScott",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/227292?v=4",
+      "url": "https://github.com/BPScott"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T01:37:22Z",
+     "reactions": [],
+     "event": "head_ref_force_pushed",
+     "eventDetail": "e8e8743"
+    },
+    {
+     "id": "HRFPE_lADOD1jqbs8AAAABUEh2fc8AAAAHgCA7GA",
+     "type": "event",
+     "author": {
+      "login": "BPScott",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/227292?v=4",
+      "url": "https://github.com/BPScott"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T01:38:42Z",
+     "reactions": [],
+     "event": "head_ref_force_pushed",
+     "eventDetail": "1cca8e3"
+    },
+    {
+     "id": "LE_lADOD1jqbs8AAAABUEh2fc8AAAAHgZF3zQ",
+     "type": "event",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T09:25:26Z",
+     "reactions": [],
+     "event": "labeled",
+     "eventDetail": "feat: ssr",
+     "eventLabel": {
+      "name": "feat: ssr",
+      "color": "F1BBCF",
+      "description": ""
+     }
+    },
+    {
+     "id": "LE_lADOD1jqbs8AAAABUEh2fc8AAAAHgZF3_g",
+     "type": "event",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T09:25:27Z",
+     "reactions": [],
+     "event": "labeled",
+     "eventDetail": "p2-edge-case",
+     "eventLabel": {
+      "name": "p2-edge-case",
+      "color": "A16B15",
+      "description": "Bug, but has workaround or limited in scope (priority)"
+     }
+    },
+    {
+     "id": "LE_lADOD1jqbs8AAAABUEh2fc8AAAAHgZF4Tw",
+     "type": "event",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T09:25:27Z",
+     "reactions": [],
+     "event": "labeled",
+     "eventDetail": "feat: web workers",
+     "eventLabel": {
+      "name": "feat: web workers",
+      "color": "BC6109",
+      "description": ""
+     }
+    },
+    {
+     "id": "PRR_kwDOD1jqbs8AAAABQIXFqA",
+     "type": "review",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T09:30:52Z",
+     "url": "https://github.com/vitejs/vite/pull/23614#pullrequestreview-5377476008",
+     "reactions": [],
+     "reviewState": "APPROVED",
+     "reviewCommentCount": 0
+    },
+    {
+     "id": "ME_lADOD1jqbs8AAAABUEh2fc8AAAAHgZqf2w",
+     "type": "event",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T09:34:12Z",
+     "reactions": [],
+     "event": "merged",
+     "eventDetail": "24bd331 into main"
+    },
+    {
+     "id": "CE_lADOD1jqbs8AAAABUEh2fc8AAAAHgZqgZg",
+     "type": "event",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T09:34:12Z",
+     "reactions": [],
+     "event": "closed"
+    },
+    {
+     "id": "CRE_kwDOD1jqbs8AAAADM2whiQ",
+     "type": "event",
+     "author": {
+      "login": "github-actions",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "url": "https://github.com/apps/github-actions"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-01T10:08:11Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "vitejs/vite#23623 release: v8.3.2",
+     "url": "https://github.com/vitejs/vite/pull/23623"
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABYc6eOw",
+     "type": "comment",
+     "author": {
+      "login": "BPScott",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/227292?v=4",
+      "url": "https://github.com/BPScott"
+     },
+     "bodyHTML": "<p dir=\"auto\">Thanks you <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/sapphi-red/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/sapphi-red\">@sapphi-red</a>!</p>",
+     "createdAt": "2026-10-01T16:35:00Z",
+     "url": "https://github.com/vitejs/vite/pull/23614#issuecomment-5935898171",
+     "reactions": []
+    },
+    {
+     "id": "CRE_kwDORmQobs8AAAADOTNGQw",
+     "type": "event",
+     "author": {
+      "login": "github-actions",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "url": "https://github.com/apps/github-actions"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-02T00:42:52Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "sudocarlos/tailrelay#140 chore: update Vite from 8.3.0 to 8.3.2",
+     "url": "https://github.com/sudocarlos/tailrelay/issues/140"
+    },
+    {
+     "id": "CRE_kwDORmQobs8AAAADOTOpRg",
+     "type": "event",
+     "author": {
+      "login": "github-actions",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "url": "https://github.com/apps/github-actions"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-10-02T00:43:08Z",
+     "reactions": [],
+     "event": "referenced",
+     "eventDetail": "sudocarlos/tailrelay#141 chore: update Vite from 8.3.0 to 8.3.2",
+     "url": "https://github.com/sudocarlos/tailrelay/pull/141"
+    }
+   ],
+   "viewerCanComment": true,
+   "additions": 53,
+   "deletions": 38,
+   "changedFiles": 2,
+   "commitCount": 2,
+   "mergeable": "UNKNOWN",
+   "reviewRequests": [],
+   "latestReviews": [
+    {
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "state": "APPROVED"
+    }
+   ],
+   "checkRuns": [
+    {
+     "name": "AgentScan",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842635990/job/110305095995"
+    },
+    {
+     "name": "AgentScan",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842636102/job/110305153123"
+    },
+    {
+     "name": "AgentScan",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842637143/job/110305149979"
+    },
+    {
+     "name": "preview",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617302/job/110305034696"
+    },
+    {
+     "name": "preview",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842635358/job/110305094436"
+    },
+    {
+     "name": "preview",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842636040/job/110305095422"
+    },
+    {
+     "name": "preview",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842636286/job/110305097846"
+    },
+    {
+     "name": "Get changed files",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110305032007"
+    },
+    {
+     "name": "Semantic Pull Request",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842612048/job/110305015813"
+    },
+    {
+     "name": "Run zizmor",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617148/job/110305031847"
+    },
+    {
+     "name": "Comment and close issue",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842635990/job/110305097855"
+    },
+    {
+     "name": "Comment and close issue",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842636102/job/110305144540"
+    },
+    {
+     "name": "Comment and close issue",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842637143/job/110305099867"
+    },
+    {
+     "name": "Lint: node-24, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110305032355"
+    },
+    {
+     "name": "Comment and close PR",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842635990/job/110305096883"
+    },
+    {
+     "name": "Comment and close PR",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842636102/job/110305095973"
+    },
+    {
+     "name": "Comment and close PR",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842637143/job/110305100714"
+    },
+    {
+     "name": "Build&Test: node-20, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110305129638"
+    },
+    {
+     "name": "Build&Test: node-22, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110305129800"
+    },
+    {
+     "name": "Build&Test: node-24, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110305129673"
+    },
+    {
+     "name": "Build&Test: node-26, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110305129658"
+    },
+    {
+     "name": "Build&Test: node-24, macos-latest",
+     "status": "COMPLETED",
+     "conclusion": "FAILURE",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110305129764"
+    },
+    {
+     "name": "Build&Test: node-24, windows-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110305129767"
+    },
+    {
+     "name": "Build & Test Passed or Skipped",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110307099574"
+    },
+    {
+     "name": "Build & Test Failed",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/36842617122/job/110307097869"
+    },
+    {
+     "name": "Pages changed - vite-docs-main",
+     "status": "COMPLETED",
+     "conclusion": "NEUTRAL",
+     "url": "https://app.netlify.com/projects/vite-docs-main/deploys/6abe26fc99830f00086319e6"
+    },
+    {
+     "name": "zizmor",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/runs/110305090861"
+    },
+    {
+     "name": "Graphite / AI Reviews",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://app.graphite.com/github/pr/vitejs/vite/23614"
+    },
+    {
+     "name": "Header rules - vite-docs-main",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://app.netlify.com/projects/vite-docs-main/deploys/6abe26fc99830f00086319e6"
+    },
+    {
+     "name": "Redirect rules - vite-docs-main",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://app.netlify.com/projects/vite-docs-main/deploys/6abe26fc99830f00086319e6"
+    },
+    {
+     "name": "netlify/vite-docs-main/deploy-preview",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://deploy-preview-23614--vite-docs-main.netlify.app"
+    }
+   ],
+   "files": [
+    {
+     "path": "packages/vite/src/node/__tests__/plugins/worker.spec.ts",
+     "additions": 49,
+     "deletions": 34,
+     "changeType": "MODIFIED"
+    },
+    {
+     "path": "packages/vite/src/node/plugins/terser.ts",
+     "additions": 4,
+     "deletions": 4,
+     "changeType": "MODIFIED"
+    }
+   ],
+   "mergedAt": "2026-10-01T09:34:12Z",
+   "mergedBy": {
+    "login": "sapphi-red",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+    "url": "https://github.com/sapphi-red"
+   }
+  },
+  "pull-23502": {
+   "kind": "pull",
+   "number": 23502,
+   "title": "perf(bundled-dev): serve an already-built lazy route instead of recompiling it on reload",
+   "state": "open",
+   "isDraft": true,
+   "author": {
+    "login": "h-a-n-a",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+    "url": "https://github.com/h-a-n-a"
+   },
+   "createdAt": "2026-09-17T06:49:37Z",
+   "updatedAt": "2026-09-30T01:32:37Z",
+   "commentCount": 4,
+   "labels": [],
+   "assignees": [],
+   "url": "https://github.com/vitejs/vite/pull/23502",
+   "reviewDecision": "REVIEW_REQUIRED",
+   "checks": "SUCCESS",
+   "headRef": "fix/lazy-redirect-to-built-chunk",
+   "baseRef": "main",
+   "bodyHTML": "<p dir=\"auto\">Redirect the lazy request to the already-built lazy route instead of recompiling it again on reload.</p>",
+   "milestone": null,
+   "participants": [
+    {
+     "login": "h-a-n-a",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+     "url": "https://github.com/h-a-n-a"
+    },
+    {
+     "login": "sapphi-red",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+     "url": "https://github.com/sapphi-red"
+    }
+   ],
+   "closedAt": null,
+   "timeline": [
+    {
+     "id": "HRFPE_lADOD1jqbs8AAAABRt8fkc8AAAAHSZ3zIw",
+     "type": "event",
+     "author": {
+      "login": "h-a-n-a",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+      "url": "https://github.com/h-a-n-a"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-17T06:57:18Z",
+     "reactions": [],
+     "event": "head_ref_force_pushed",
+     "eventDetail": "1b9850a"
+    },
+    {
+     "id": "RTE_lADOD1jqbs8AAAABRt8fkc8AAAAHSkF6YQ",
+     "type": "event",
+     "author": {
+      "login": "h-a-n-a",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+      "url": "https://github.com/h-a-n-a"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-17T10:08:44Z",
+     "reactions": [],
+     "event": "renamed",
+     "eventDetail": "fix(bundled-dev): serve an already-built lazy route instead of recompiling it on reload → perf(bundled-dev): serve an already-built lazy route instead of recompiling it on reload"
+    },
+    {
+     "id": "HRFPE_lADOD1jqbs8AAAABRt8fkc8AAAAHTeo7MQ",
+     "type": "event",
+     "author": {
+      "login": "h-a-n-a",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+      "url": "https://github.com/h-a-n-a"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-18T06:34:18Z",
+     "reactions": [],
+     "event": "head_ref_force_pushed",
+     "eventDetail": "ffd188b"
+    },
+    {
+     "id": "RFRE_lADOD1jqbs8AAAABRt8fkc8AAAAHVjVasA",
+     "type": "event",
+     "author": {
+      "login": "h-a-n-a",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+      "url": "https://github.com/h-a-n-a"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-21T07:29:03Z",
+     "reactions": [],
+     "event": "ready_for_review"
+    },
+    {
+     "id": "RRE_lADOD1jqbs8AAAABRt8fkc8AAAAHVjV2Wg",
+     "type": "event",
+     "author": {
+      "login": "h-a-n-a",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+      "url": "https://github.com/h-a-n-a"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-21T07:29:12Z",
+     "reactions": [],
+     "event": "review_requested",
+     "eventDetail": "sapphi-red"
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABX8Fl8w",
+     "type": "comment",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "<p dir=\"auto\">Just in case, does this require a specific version of Rolldown? I guess no</p>",
+     "createdAt": "2026-09-30T00:12:03Z",
+     "url": "https://github.com/vitejs/vite/pull/23502#issuecomment-5901477363",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABX8Hb0g",
+     "type": "comment",
+     "author": {
+      "login": "sapphi-red",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+      "url": "https://github.com/sapphi-red"
+     },
+     "bodyHTML": "<p dir=\"auto\">Even if 302 is used, the browser treats the module as a different instance, would that be fine?<br>\n(haven't deeply thought)</p>",
+     "createdAt": "2026-09-30T00:14:51Z",
+     "url": "https://github.com/vitejs/vite/pull/23502#issuecomment-5901507538",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABX8zVnw",
+     "type": "comment",
+     "author": {
+      "login": "h-a-n-a",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+      "url": "https://github.com/h-a-n-a"
+     },
+     "bodyHTML": "<blockquote>\n<p dir=\"auto\">does this require a specific version of Rolldown?</p>\n</blockquote>\n<p dir=\"auto\">I guess no, but this is actually built and tested on top of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5582232826\" data-permission-text=\"Title is private\" data-url=\"https://github.com/rolldown/rolldown/issues/11000\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/rolldown/rolldown/pull/11000/hovercard\" href=\"https://github.com/rolldown/rolldown/pull/11000\">rolldown/rolldown#11000</a>. We can delay it until it has been released. Let me draft it.</p>",
+     "createdAt": "2026-09-30T01:24:51Z",
+     "url": "https://github.com/vitejs/vite/pull/23502#issuecomment-5902226847",
+     "reactions": []
+    },
+    {
+     "id": "IC_kwDOD1jqbs8AAAABX83s5Q",
+     "type": "comment",
+     "author": {
+      "login": "h-a-n-a",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+      "url": "https://github.com/h-a-n-a"
+     },
+     "bodyHTML": "<blockquote>\n<p dir=\"auto\">Even if 302 is used, the browser treats the module as a different instance, would that be fine?</p>\n</blockquote>\n<p dir=\"auto\">This is only supposed to work on page refresh (instead of compiling all over again, it redirects the requests to already served chunks), so i think it will be fine.</p>",
+     "createdAt": "2026-09-30T01:31:54Z",
+     "url": "https://github.com/vitejs/vite/pull/23502#issuecomment-5902298341",
+     "reactions": []
+    },
+    {
+     "id": "CTDE_lADOD1jqbs8AAAABRt8fkc8AAAAHevCkQw",
+     "type": "event",
+     "author": {
+      "login": "h-a-n-a",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10465670?u=98640326c850a4690b846a0e5012952c4848c8e0&v=4",
+      "url": "https://github.com/h-a-n-a"
+     },
+     "bodyHTML": "",
+     "createdAt": "2026-09-30T01:32:17Z",
+     "reactions": [],
+     "event": "convert_to_draft"
+    }
+   ],
+   "viewerCanComment": true,
+   "additions": 267,
+   "deletions": 4,
+   "changedFiles": 5,
+   "commitCount": 3,
+   "mergeable": "MERGEABLE",
+   "reviewRequests": [
+    {
+     "login": "sapphi-red",
+     "avatarUrl": "https://avatars.githubusercontent.com/u/49056869?u=ec70859392ec0140d60446f7815ad2bf857904fd&v=4",
+     "url": "https://github.com/sapphi-red"
+    }
+   ],
+   "latestReviews": [],
+   "checkRuns": [
+    {
+     "name": "preview",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100659/job/105511049495"
+    },
+    {
+     "name": "Get changed files",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105513216226"
+    },
+    {
+     "name": "Get changed files",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105511042177"
+    },
+    {
+     "name": "Analyze (actions)",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098712/job/105511044839"
+    },
+    {
+     "name": "Semantic Pull Request",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317099437/job/105511045331"
+    },
+    {
+     "name": "Semantic Pull Request",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35573166894/job/106249002032"
+    },
+    {
+     "name": "Run zizmor",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100655/job/105511048519"
+    },
+    {
+     "name": "Lint: node-24, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105513253669"
+    },
+    {
+     "name": "Lint: node-24, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105511042434"
+    },
+    {
+     "name": "Build&Test: node-20, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105513216492"
+    },
+    {
+     "name": "Build&Test: node-20, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105511116834"
+    },
+    {
+     "name": "Build&Test: node-22, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105513216832"
+    },
+    {
+     "name": "Build&Test: node-22, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105511116841"
+    },
+    {
+     "name": "Build&Test: node-24, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105513215516"
+    },
+    {
+     "name": "Build&Test: node-24, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105511116778"
+    },
+    {
+     "name": "Build&Test: node-26, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105513249784"
+    },
+    {
+     "name": "Build&Test: node-26, ubuntu-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105511116898"
+    },
+    {
+     "name": "Build&Test: node-24, macos-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105513216417"
+    },
+    {
+     "name": "Build&Test: node-24, macos-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105511116824"
+    },
+    {
+     "name": "Build&Test: node-24.15.0, windows-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105513216776"
+    },
+    {
+     "name": "Build&Test: node-24.15.0, windows-latest",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105511116850"
+    },
+    {
+     "name": "Build & Test Passed or Skipped",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105514036825"
+    },
+    {
+     "name": "Build & Test Passed or Skipped",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105512334422"
+    },
+    {
+     "name": "Build & Test Failed",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317100713/job/105514038757"
+    },
+    {
+     "name": "Build & Test Failed",
+     "status": "COMPLETED",
+     "conclusion": "SKIPPED",
+     "url": "https://github.com/vitejs/vite/actions/runs/35317098610/job/105512335878"
+    },
+    {
+     "name": "Header rules - vite-docs-main",
+     "status": "COMPLETED",
+     "conclusion": "NEUTRAL",
+     "url": "https://app.netlify.com/projects/vite-docs-main/deploys/6aace09f209bb50009d995e2"
+    },
+    {
+     "name": "Pages changed - vite-docs-main",
+     "status": "COMPLETED",
+     "conclusion": "NEUTRAL",
+     "url": "https://app.netlify.com/projects/vite-docs-main/deploys/6aace09f209bb50009d995e2"
+    },
+    {
+     "name": "Redirect rules - vite-docs-main",
+     "status": "COMPLETED",
+     "conclusion": "NEUTRAL",
+     "url": "https://app.netlify.com/projects/vite-docs-main/deploys/6aace09f209bb50009d995e2"
+    },
+    {
+     "name": "CodeQL",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/runs/105511167014"
+    },
+    {
+     "name": "zizmor",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://github.com/vitejs/vite/runs/105511094852"
+    },
+    {
+     "name": "Graphite / AI Reviews",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://app.graphite.com/github/pr/vitejs/vite/23502"
+    },
+    {
+     "name": "netlify/vite-docs-main/deploy-preview",
+     "status": "COMPLETED",
+     "conclusion": "SUCCESS",
+     "url": "https://app.netlify.com/projects/vite-docs-main/deploys/6aace09f209bb50009d995e2"
+    }
+   ],
+   "files": [
+    {
+     "path": "packages/vite/src/node/server/bundledDev.ts",
+     "additions": 51,
+     "deletions": 0,
+     "changeType": "MODIFIED"
+    },
+    {
+     "path": "packages/vite/src/node/server/middlewares/triggerLazyBundling.ts",
+     "additions": 13,
+     "deletions": 0,
+     "changeType": "MODIFIED"
+    },
+    {
+     "path": "playground/lazy-compilation/__tests__/lazy-compilation.spec.ts",
+     "additions": 184,
+     "deletions": 3,
+     "changeType": "MODIFIED"
+    },
+    {
+     "path": "playground/lazy-compilation/shared.js",
+     "additions": 3,
+     "deletions": 0,
+     "changeType": "MODIFIED"
+    },
+    {
+     "path": "playground/lazy-compilation/vite.config.ts",
+     "additions": 16,
+     "deletions": 1,
+     "changeType": "MODIFIED"
+    }
+   ],
+   "mergedAt": null,
+   "mergedBy": null
+  }
+ }
 }

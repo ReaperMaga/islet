@@ -49,8 +49,13 @@ type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K>
 export function request<T extends ToWebview>(msg: DistributiveOmit<RequestMsg, 'requestId'>): Promise<T> {
   const requestId = uid();
   return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      off();
+      reject(new Error('GitHub took too long to respond. Try again.'));
+    }, 30_000);
     const off = onMessage((m) => {
       if (!('requestId' in m) || m.requestId !== requestId) return;
+      clearTimeout(timer);
       off();
       if (m.type === 'error') reject(new Error(m.message));
       else resolve(m as T);
