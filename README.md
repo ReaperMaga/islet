@@ -66,7 +66,7 @@ git clone https://github.com/ReaperMaga/islet.git
 cd islet
 npm install
 npm run package
-code --install-extension islet-0.4.0.vsix
+code --install-extension islet-0.4.1.vsix
 ```
 
 Then reload VS Code, click the GitHub icon in the activity bar and sign in when asked.

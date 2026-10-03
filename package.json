@@ -2,7 +2,7 @@
   "name": "islet",
   "displayName": "Islet",
   "description": "GitHub issues and pull requests for the repository you're working in, plus Gradle test results in the Testing panel, in a calm Islands-style UI.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "publisher": "reapermaga",
   "author": "ReaperMaga",
   "license": "MIT",

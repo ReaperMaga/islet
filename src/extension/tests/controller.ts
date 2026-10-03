@@ -344,13 +344,16 @@ export class GradleTests implements vscode.Disposable {
         continue;
       }
       if (ev.e === 'out') {
-        // Output printed by a test, or by class-level setup such as the application starting.
-        if (!ev.text || !ev.cls) continue;
-        const target = ev.name
-          ? this.itemForCase(mod, { name: ev.name, className: ev.cls, time: 0, status: 'passed' })
-          : this.classItem(mod, ev.cls);
+        // Output printed by a test, by class-level setup, or by the test JVM as a whole (e.g. a
+        // Quarkus application booting once for all tests), which goes to the run's own log.
+        if (!ev.text) continue;
+        const target = !ev.cls
+          ? undefined
+          : ev.name
+            ? this.itemForCase(mod, { name: ev.name, className: ev.cls, time: 0, status: 'passed' })
+            : this.classItem(mod, ev.cls);
         active.run.appendOutput(toTerminal(ev.text, ev.std === 'StdErr'), undefined, target);
-        active.liveOutput.add(`${mod.dir}|${ev.cls}`);
+        if (ev.cls) active.liveOutput.add(`${mod.dir}|${ev.cls}`);
         continue;
       }
       if (!ev.cls || !ev.name) continue;
