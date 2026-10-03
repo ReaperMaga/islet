@@ -1,8 +1,8 @@
 {
   "name": "islet",
   "displayName": "Islet",
-  "description": "GitHub issues and pull requests for the repository you're working in, in a calm Islands-style panel.",
-  "version": "0.1.0",
+  "description": "GitHub issues and pull requests for the repository you're working in, plus Gradle test results in the Testing panel, in a calm Islands-style UI.",
+  "version": "0.2.0",
   "publisher": "reapermaga",
   "author": "ReaperMaga",
   "license": "MIT",
@@ -12,11 +12,11 @@
   },
   "bugs": "https://github.com/ReaperMaga/islet/issues",
   "homepage": "https://github.com/ReaperMaga/islet#readme",
-  "keywords": ["github", "issues", "pull requests", "code review", "islands"],
+  "keywords": ["github", "issues", "pull requests", "code review", "gradle", "junit", "kotlin", "testing", "islands"],
   "engines": {
     "vscode": "^1.95.0"
   },
-  "categories": ["SCM Providers", "Other"],
+  "categories": ["SCM Providers", "Testing", "Other"],
   "main": "./dist/extension.js",
   "extensionDependencies": ["vscode.git"],
   "activationEvents": ["onStartupFinished"],
@@ -43,6 +43,31 @@
       { "command": "islet.refresh", "title": "Refresh", "category": "Islet", "icon": "$(refresh)" },
       { "command": "islet.signIn", "title": "Sign in to GitHub", "category": "Islet" },
       { "command": "islet.openItem", "title": "Open Issue or Pull Request…", "category": "Islet" }
+    ],
+    "configuration": {
+      "title": "Islet",
+      "properties": {
+        "islet.gradleTests.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show Gradle test results in the Testing panel, including runs started from the terminal or other tools."
+        },
+        "islet.gradleTests.revealOnRun": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open the Test Results view when a Gradle test run starts."
+        }
+      }
+    },
+    "taskDefinitions": [
+      {
+        "type": "islet-gradle",
+        "required": ["task"],
+        "properties": {
+          "task": { "type": "string", "description": "Gradle test task, e.g. test." },
+          "module": { "type": "string", "description": "Gradle project path, e.g. :api." }
+        }
+      }
     ],
     "menus": {
       "view/title": [

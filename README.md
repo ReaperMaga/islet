@@ -22,6 +22,28 @@ and a quiet colour palette that only uses colour where it means something.
 - **Comment** on issues and pull requests from the detail view (Ctrl+Enter to send).
 - Uses VS Code's built-in GitHub sign-in. Islet never stores a token itself.
 
+### Gradle test results
+
+Islet also brings a JetBrains-style test window to Gradle projects (Kotlin and Java, JUnit 5).
+
+- **Every test run shows up in the Testing panel**: `./gradlew test` in any terminal, the Gradle
+  extension's Tasks view, or Islet's own Run buttons. Islet reads the JUnit XML files Gradle writes
+  to `build/test-results/`, so it does not matter how Gradle was started.
+- **Test Results opens when a run starts**, with pass / fail / skipped and timings per test.
+- **Tree by module, class, nested class, test and parameterized invocation.** Works with
+  multi-module builds and with several Gradle builds in one workspace.
+- **Failures** show the message and stack trace, jump to the failing line, and offer an
+  expected / actual diff for `assertEquals` failures. Red and green marks appear next to tests in the
+  editor.
+- **Run buttons** in the panel and next to every test, class and module. They run
+  `gradlew :module:test --rerun --tests …` for just that selection.
+- Tests are found in `src/*test*/{kotlin,java}` from their `@Test`, `@ParameterizedTest`,
+  `@RepeatedTest`, `@TestFactory` and `@TestTemplate` annotations, so run buttons appear before the
+  first run.
+
+Settings: `islet.gradleTests.enabled` (default on) and `islet.gradleTests.revealOnRun` (open Test
+Results when a run starts, default on).
+
 ## Install
 
 Islet isn't on the Marketplace yet. Build the package and install it:
@@ -31,7 +53,7 @@ git clone https://github.com/ReaperMaga/islet.git
 cd islet
 npm install
 npm run package
-code --install-extension islet-0.1.0.vsix
+code --install-extension islet-0.2.0.vsix
 ```
 
 Then reload VS Code, click the GitHub icon in the activity bar and sign in when asked.
@@ -72,6 +94,7 @@ the `ISLET_DEV_TOKEN` environment variable if it is set. Installed builds ignore
 
 ```
 src/extension/   extension host: views, panels, auth, repository detection, checkout, diffs
+src/extension/tests/  Gradle test results: JUnit XML parser, test discovery, Testing panel
 src/api/         GitHub GraphQL client
 src/shared/      types and message protocol shared by every part
 src/webview/     sidebar and detail webviews, shared theme and helpers, browser mock host
@@ -85,6 +108,9 @@ See [DESIGN.md](DESIGN.md) for the design rules and architecture notes.
 - Review requests to teams are not shown, only to people.
 - Pull requests from forks show the branch without the fork owner.
 - Commenting is supported; approving, requesting changes and merging are not yet.
+- Gradle tests: running from the panel needs Gradle 7.6 or newer (for `--rerun`); debugging tests
+  from the panel is not supported yet; Kotest and other non-JUnit styles are only shown after they
+  have run.
 
 ## Credits
 
