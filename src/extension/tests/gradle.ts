@@ -53,15 +53,21 @@ export function resultLocation(xmlPath: string): { moduleDir: string; task: stri
   return { moduleDir: parts.slice(0, idx - 1).join(path.sep), task: parts[idx + 1] };
 }
 
-/** How to start Gradle in `rootDir`: the wrapper if present, else `gradle` from PATH. */
-export function gradleCommand(rootDir: string): { command: string; prefixArgs: string[] } {
+/**
+ * How to start Gradle in `rootDir` with `args`: the wrapper if present, else `gradle` from PATH.
+ * On Windows the .bat wrapper needs cmd.exe; the command line is quoted by hand (cmd's /s mode)
+ * so test names with spaces survive even when the project path has spaces too.
+ */
+export function gradleSpawn(rootDir: string, args: string[]): { command: string; args: string[]; verbatim: boolean } {
   if (process.platform === 'win32') {
     const wrapper = path.join(rootDir, 'gradlew.bat');
-    // .bat files need cmd.exe when started without a shell.
-    return { command: 'cmd.exe', prefixArgs: ['/d', '/c', fs.existsSync(wrapper) ? wrapper : 'gradle'] };
+    const exe = fs.existsSync(wrapper) ? wrapper : 'gradle';
+    const quote = (a: string) => (/[\s"&|<>^()%!]/.test(a) ? `"${a.replace(/"/g, '""')}"` : a);
+    const line = [exe, ...args].map(quote).join(' ');
+    return { command: 'cmd.exe', args: ['/d', '/s', '/c', `"${line}"`], verbatim: true };
   }
   const wrapper = path.join(rootDir, 'gradlew');
-  return fs.existsSync(wrapper) ? { command: wrapper, prefixArgs: [] } : { command: 'gradle', prefixArgs: [] };
+  return { command: fs.existsSync(wrapper) ? wrapper : 'gradle', args, verbatim: false };
 }
 
 /** Arguments for running `task` of one module, optionally limited to test filters (Gradle --tests patterns). */

@@ -2,7 +2,7 @@
   "name": "islet",
   "displayName": "Islet",
   "description": "GitHub issues and pull requests for the repository you're working in, plus Gradle test results in the Testing panel, in a calm Islands-style UI.",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "publisher": "reapermaga",
   "author": "ReaperMaga",
   "license": "MIT",
@@ -12,14 +12,32 @@
   },
   "bugs": "https://github.com/ReaperMaga/islet/issues",
   "homepage": "https://github.com/ReaperMaga/islet#readme",
-  "keywords": ["github", "issues", "pull requests", "code review", "gradle", "junit", "kotlin", "testing", "islands"],
+  "keywords": [
+    "github",
+    "issues",
+    "pull requests",
+    "code review",
+    "gradle",
+    "junit",
+    "kotlin",
+    "testing",
+    "islands"
+  ],
   "engines": {
     "vscode": "^1.95.0"
   },
-  "categories": ["SCM Providers", "Testing", "Other"],
+  "categories": [
+    "SCM Providers",
+    "Testing",
+    "Other"
+  ],
   "main": "./dist/extension.js",
-  "extensionDependencies": ["vscode.git"],
-  "activationEvents": ["onStartupFinished"],
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "viewsContainers": {
       "activitybar": [
@@ -40,9 +58,22 @@
       ]
     },
     "commands": [
-      { "command": "islet.refresh", "title": "Refresh", "category": "Islet", "icon": "$(refresh)" },
-      { "command": "islet.signIn", "title": "Sign in to GitHub", "category": "Islet" },
-      { "command": "islet.openItem", "title": "Open Issue or Pull Request…", "category": "Islet" }
+      {
+        "command": "islet.refresh",
+        "title": "Refresh",
+        "category": "Islet",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "islet.signIn",
+        "title": "Sign in to GitHub",
+        "category": "Islet"
+      },
+      {
+        "command": "islet.openItem",
+        "title": "Open Issue or Pull Request…",
+        "category": "Islet"
+      }
     ],
     "configuration": {
       "title": "Islet",
@@ -61,22 +92,31 @@
           "type": "boolean",
           "default": false,
           "markdownDescription": "Show live progress (each test turning green or red as it finishes) for Gradle runs started outside Islet too, such as `./gradlew test` in a terminal or the Gradle extension's Tasks view. Installs a small init script in `~/.gradle/init.d` that writes test events to each project's `build/islet/` folder; turning this off removes it. Islet's own Run buttons always show live progress."
+        },
+        "islet.gradleTests.console": {
+          "type": "string",
+          "enum": [
+            "editor",
+            "panel",
+            "off"
+          ],
+          "enumDescriptions": [
+            "Open the Gradle Tests console as an editor tab.",
+            "Open it in the bottom panel, next to the terminal.",
+            "Do not show the console."
+          ],
+          "default": "editor",
+          "description": "Where to show the Gradle Tests console, which streams Gradle's output, everything the tests print, failures and a summary while tests run."
         }
       }
     },
-    "taskDefinitions": [
-      {
-        "type": "islet-gradle",
-        "required": ["task"],
-        "properties": {
-          "task": { "type": "string", "description": "Gradle test task, e.g. test." },
-          "module": { "type": "string", "description": "Gradle project path, e.g. :api." }
-        }
-      }
-    ],
     "menus": {
       "view/title": [
-        { "command": "islet.refresh", "when": "view == islet.sidebar", "group": "navigation" }
+        {
+          "command": "islet.refresh",
+          "when": "view == islet.sidebar",
+          "group": "navigation"
+        }
       ]
     }
   },

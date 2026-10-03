@@ -9,13 +9,15 @@
 // Gradle init script that appends events to build/islet/test-events/<task>.jsonl. Islet passes it
 // to its own runs; with "islet.gradleTests.trackAllRuns" it is also installed in ~/.gradle/init.d
 // so runs started from the terminal or the Gradle extension report live too.
+import * as cp from 'child_process';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { log } from '../log';
 import { discoverTests } from './discovery';
-import { GradleModule, gradleCommand, moduleFor, resultLocation, testArgs } from './gradle';
+import { GradleModule, gradleSpawn, moduleFor, resultLocation, testArgs } from './gradle';
+import { RunCounts, TestConsole } from './console';
 import { INIT_SCRIPT, INIT_SCRIPT_MARKER, INIT_SCRIPT_NAME } from './initScript';
 import { CaseStatus, parseJUnitXml, splitCaseName, SuiteResult, TestCaseResult } from './junitXml';
 
@@ -23,7 +25,6 @@ const SOURCE_GLOB = '**/src/*[tT]est*/{kotlin,java}/**/*.{kt,java}';
 const RESULT_GLOB = '**/build/test-results/**';
 const EVENTS_GLOB = '**/build/islet/test-events/*.jsonl';
 const EXCLUDE_GLOB = '{**/node_modules/**,**/build/**,**/.gradle/**}';
-const TASK_TYPE = 'islet-gradle';
 /** A run started by a file change or a foreign Gradle task ends this long after the last activity. */
 const IDLE_END_MS = 5000;
 /** A run with tests still marked running is ended anyway after this long without any activity. */
@@ -58,6 +59,12 @@ interface ActiveRun {
   liveOutput: Set<string>;
   /** Time of the last result or event (runs Islet did not start). */
   lastActivity?: number;
+  counts: RunCounts;
+  /** Result per item in this run. */
+  status: Map<vscode.TestItem, CaseStatus>;
+  startedAt: number;
+  /** Whether this run is shown in the Gradle Tests console. */
+  toConsole: boolean;
 }
 
 export class GradleTests implements vscode.Disposable {
@@ -68,7 +75,8 @@ export class GradleTests implements vscode.Disposable {
   private readonly moduleTask = new Map<string, string>();
   /** Class ids discovered per source file, to clean up when a file changes. */
   private readonly fileClasses = new Map<string, Set<string>>();
-  private readonly subs: vscode.Disposable[] = [];
+  private readonly console = new TestConsole();
+  private readonly subs: vscode.Disposable[] = [this.console];
   private active: ActiveRun | undefined;
   private xmlQueue = new Set<string>();
   private xmlTimer: NodeJS.Timeout | undefined;
@@ -353,6 +361,7 @@ export class GradleTests implements vscode.Disposable {
             ? this.itemForCase(mod, { name: ev.name, className: ev.cls, time: 0, status: 'passed' })
             : this.classItem(mod, ev.cls);
         active.run.appendOutput(toTerminal(ev.text, ev.std === 'StdErr'), undefined, target);
+        if (active.toConsole) this.console.write(ev.text, ev.std === 'StdErr');
         if (ev.cls) active.liveOutput.add(`${mod.dir}|${ev.cls}`);
         continue;
       }
@@ -432,6 +441,10 @@ export class GradleTests implements vscode.Disposable {
       const cls = this.classItem(mod, suite.name);
       if (suite.systemOut) active.run.appendOutput(toTerminal(suite.systemOut, false), undefined, cls);
       if (suite.systemErr) active.run.appendOutput(toTerminal(suite.systemErr, true), undefined, cls);
+      if (active.toConsole) {
+        if (suite.systemOut) this.console.write(suite.systemOut);
+        if (suite.systemErr) this.console.write(suite.systemErr, true);
+      }
     }
   }
 
@@ -443,14 +456,37 @@ export class GradleTests implements vscode.Disposable {
     active.running.delete(item);
     if (!firstReport) return;
     const status: CaseStatus = c.status;
-    if (status === 'passed') active.run.passed(item, ms);
-    else if (status === 'skipped') active.run.skipped(item);
-    else {
+    active.status.set(item, status);
+    if (status === 'passed') {
+      active.run.passed(item, ms);
+      active.counts.passed++;
+    } else if (status === 'skipped') {
+      active.run.skipped(item);
+      active.counts.skipped++;
+    } else {
       const msg = this.failureMessage(item, c);
       if (status === 'failed') active.run.failed(item, msg, ms);
       else active.run.errored(item, msg, ms);
       if (c.details) active.run.appendOutput(c.details.replace(/\r?\n/g, '\r\n') + '\r\n', msg.location, item);
+      active.counts.failed++;
+      if (active.toConsole) this.console.failure(this.describe(item), c.message, c.details);
     }
+  }
+
+  /** "OuterTest › Nested › test name" for console headings. */
+  private describe(item: vscode.TestItem): string {
+    const parts: string[] = [];
+    for (let i: vscode.TestItem | undefined = item; i; i = i.parent) {
+      if (this.data.get(i)?.kind === 'module') break;
+      parts.unshift(i.label);
+    }
+    return parts.join(' › ');
+  }
+
+  /** Ends a run and writes the summary line to the console. */
+  private finish(active: ActiveRun, note?: string): void {
+    active.run.end();
+    if (active.toConsole) this.console.summary(active.counts, Date.now() - active.startedAt, note);
   }
 
   private failureMessage(item: vscode.TestItem, c: TestCaseResult): vscode.TestMessage {
@@ -475,7 +511,7 @@ export class GradleTests implements vscode.Disposable {
     const files = await vscode.workspace.findFiles('**/build/test-results/*/TEST-*.xml', '{**/node_modules/**}', 5000);
     if (!files.length) return;
     const run = this.ctrl.createTestRun(new vscode.TestRunRequest(), 'Last Gradle results', true);
-    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set() };
+    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set(), counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: false };
     for (const f of files) this.applyResultFile(f.fsPath, active);
     run.end();
   }
@@ -485,8 +521,9 @@ export class GradleTests implements vscode.Disposable {
   private ensureRun(): ActiveRun {
     if (this.active) return this.active;
     const run = this.ctrl.createTestRun(new vscode.TestRunRequest(), 'Gradle test', true);
-    this.active = { run, own: false, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set() };
+    this.active = { run, own: false, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set(), counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: true };
     log.info('Gradle tests: detected a test run');
+    this.console.startRun('Gradle test · started outside Islet');
     this.reveal();
     this.touch(this.active);
     return this.active;
@@ -508,12 +545,11 @@ export class GradleTests implements vscode.Disposable {
       const busy = active.tasks > 0 || active.running.size > 0;
       if (busy && Date.now() - (active.lastActivity ?? 0) < STALE_RUN_MS) return this.scheduleIdleEnd(active);
       this.active = undefined;
-      active.run.end();
+      this.finish(active);
     }, IDLE_END_MS);
   }
 
   private isGradleTestTask(task: vscode.Task): boolean {
-    if (task.definition.type === TASK_TYPE) return false; // our own runs are tracked directly
     const text = [task.name, task.definition.script, task.definition.task, task.definition.command]
       .filter((v) => typeof v === 'string')
       .join(' ');
@@ -555,8 +591,10 @@ export class GradleTests implements vscode.Disposable {
       this.active = undefined;
     }
     const run = this.ctrl.createTestRun(request, 'Gradle test', true);
-    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set() };
+    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set(), counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: true };
     this.active = active;
+    const what = request.include?.length === 1 ? this.describe(request.include[0]) || request.include[0].label : 'all tests';
+    this.console.startRun(`Gradle test · ${what}`);
     this.reveal();
 
     const roots: vscode.TestItem[] = [];
@@ -580,27 +618,85 @@ export class GradleTests implements vscode.Disposable {
 
     for (const entry of plan.values()) for (const leaf of entry.leaves) run.enqueued(leaf);
 
+    // One Gradle call per build when its selected modules all run completely (saves Gradle's startup
+    // per module); otherwise one call per module, because --tests filters apply to every task.
+    type Batch = { rootDir: string; taskArgs: string[]; leaves: vscode.TestItem[]; eventFiles: string[] };
+    const batches: Batch[] = [];
+    const whole = new Map<string, Batch>();
+    for (const entry of plan.values()) {
+      const task = this.moduleTask.get(entry.module.dir) ?? 'test';
+      if (entry.all) {
+        let b = whole.get(entry.module.rootDir);
+        if (!b) {
+          b = { rootDir: entry.module.rootDir, taskArgs: [], leaves: [], eventFiles: [] };
+          whole.set(entry.module.rootDir, b);
+          batches.push(b);
+        }
+        b.taskArgs.push(...testArgs(entry.module, task, []));
+        b.leaves.push(...entry.leaves);
+        b.eventFiles.push(eventFile(entry.module, task));
+      } else {
+        batches.push({
+          rootDir: entry.module.rootDir,
+          taskArgs: testArgs(entry.module, task, [...entry.filters]),
+          leaves: entry.leaves,
+          eventFiles: [eventFile(entry.module, task)],
+        });
+      }
+    }
+
+    let note: string | undefined;
     try {
-      for (const entry of plan.values()) {
-        if (token.isCancellationRequested) break;
+      for (const entry of batches) {
+        if (token.isCancellationRequested) {
+          note = 'cancelled';
+          break;
+        }
         for (const leaf of entry.leaves) run.started(leaf);
-        const task = this.moduleTask.get(entry.module.dir) ?? 'test';
-        const exitCode = await this.runGradle(entry.module, task, entry.all ? [] : [...entry.filters], token);
+        // Read the live event files often while Gradle runs, so test output keeps its place among
+        // Gradle's own output (file watcher events alone can lag behind).
+        const poll = setInterval(() => {
+          for (const file of entry.eventFiles) if (fs.existsSync(file)) this.onEventFile(vscode.Uri.file(file));
+        }, 250);
+        let exitCode: number | undefined;
+        try {
+          exitCode = await this.runGradle(entry.rootDir, entry.taskArgs, token);
+        } finally {
+          clearInterval(poll);
+          for (const file of entry.eventFiles) if (fs.existsSync(file)) this.onEventFile(vscode.Uri.file(file));
+        }
         await new Promise((r) => setTimeout(r, XML_BATCH_MS + 300));
         await this.flushed;
+        // A queued test whose invocations only appeared during the run (parameterized tests in a
+        // fresh window) takes its result from them; otherwise VS Code would show it as skipped.
+        for (const l of entry.leaves) {
+          if (active.reported.has(l) || !this.hasReportedChild(l, active)) continue;
+          const states: CaseStatus[] = [];
+          l.children.forEach((c) => {
+            const s = active.status.get(c);
+            if (s) states.push(s);
+          });
+          if (states.some((s) => s === 'failed' || s === 'errored')) {
+            active.run.failed(l, new vscode.TestMessage('One or more invocations failed.'));
+          } else if (states.length && states.every((s) => s === 'skipped')) active.run.skipped(l);
+          else active.run.passed(l);
+          active.reported.add(l);
+        }
         const missing = entry.leaves.filter((l) => !active.reported.has(l) && !this.hasReportedChild(l, active));
+        if (token.isCancellationRequested) note = 'cancelled';
         if (missing.length && exitCode !== 0 && !token.isCancellationRequested) {
-          const note = new vscode.TestMessage(
-            `Gradle exited with code ${exitCode ?? 'unknown'} before reporting this test. See the "Islet: Gradle" terminal for the build output.`,
+          const msg = new vscode.TestMessage(
+            `Gradle exited with code ${exitCode ?? 'unknown'} before reporting this test. See the "Gradle Tests" console for the build output.`,
           );
-          for (const l of missing) run.errored(l, note);
+          for (const l of missing) run.errored(l, msg);
+          note = `Gradle exited with code ${exitCode ?? 'unknown'}`;
         } else {
           for (const l of missing) run.skipped(l);
         }
       }
     } finally {
       if (this.active === active) this.active = undefined;
-      run.end();
+      this.finish(active, note);
     }
   }
 
@@ -623,39 +719,35 @@ export class GradleTests implements vscode.Disposable {
     item.children.forEach((c) => this.collectLeaves(c, excluded, out));
   }
 
-  private runGradle(mod: GradleModule, task: string, filters: string[], token: vscode.CancellationToken): Promise<number | undefined> {
-    const { command, prefixArgs } = gradleCommand(mod.rootDir);
-    const args = [...prefixArgs, '--init-script', this.initScriptPath, ...testArgs(mod, task, filters)];
-    const folder = vscode.workspace.getWorkspaceFolder(vscode.Uri.file(mod.rootDir)) ?? vscode.TaskScope.Workspace;
-    const t = new vscode.Task(
-      { type: TASK_TYPE, task, module: mod.projectPath || ':' },
-      folder,
-      `${path.basename(mod.rootDir)}${mod.projectPath}:${task}`,
-      'Islet: Gradle',
-      new vscode.ProcessExecution(command, args, { cwd: mod.rootDir }),
-    );
-    t.presentationOptions = { reveal: vscode.TaskRevealKind.Never, panel: vscode.TaskPanelKind.Dedicated, clear: true };
-    log.info(`Gradle tests: ${command} ${args.join(' ')} (in ${mod.rootDir})`);
+  /** Runs Gradle directly so its whole output streams into the Gradle Tests console. */
+  private runGradle(rootDir: string, taskArgs: string[], token: vscode.CancellationToken): Promise<number | undefined> {
+    // --continue: like JetBrains, run every module's tests even when an earlier module has failures.
+    const gradleArgs = ['--init-script', this.initScriptPath, '--console=plain', '--continue', ...taskArgs];
+    const { command, args, verbatim } = gradleSpawn(rootDir, gradleArgs);
+    log.info(`Gradle tests: ${command} ${args.join(' ')} (in ${rootDir})`);
+    this.console.write(`\x1b[2m> gradlew ${gradleArgs.map((a) => (/\s/.test(a) ? `"${a}"` : a)).join(' ')}\x1b[0m\n\n`);
 
     return new Promise((resolve) => {
-      let execution: vscode.TaskExecution | undefined;
-      const end = vscode.tasks.onDidEndTaskProcess((e) => {
-        if (e.execution === execution) {
-          end.dispose();
-          cancel.dispose();
-          resolve(e.exitCode);
-        }
+      let child: cp.ChildProcess;
+      try {
+        child = cp.spawn(command, args, { cwd: rootDir, env: process.env, windowsHide: true, windowsVerbatimArguments: verbatim });
+      } catch (err) {
+        log.error('Gradle tests: could not start Gradle', err);
+        this.console.write(`Could not start Gradle: ${err instanceof Error ? err.message : String(err)}\n`, true);
+        resolve(undefined);
+        return;
+      }
+      child.stdout?.setEncoding('utf8').on('data', (d: string) => this.console.write(d));
+      child.stderr?.setEncoding('utf8').on('data', (d: string) => this.console.write(d, true));
+      const cancel = token.onCancellationRequested(() => killTree(child));
+      child.on('error', (err) => {
+        log.error('Gradle tests: Gradle failed to run', err);
+        this.console.write(`Could not start Gradle: ${err.message}\n`, true);
       });
-      const cancel = token.onCancellationRequested(() => execution?.terminate());
-      vscode.tasks.executeTask(t).then(
-        (ex) => (execution = ex),
-        (err) => {
-          end.dispose();
-          cancel.dispose();
-          log.error('Gradle tests: could not start Gradle', err);
-          resolve(undefined);
-        },
-      );
+      child.on('close', (code) => {
+        cancel.dispose();
+        resolve(code ?? undefined);
+      });
     });
   }
 
@@ -671,4 +763,16 @@ export class GradleTests implements vscode.Disposable {
 function toTerminal(text: string, stderr: boolean): string {
   const t = text.replace(/\r?\n/g, '\r\n');
   return stderr ? `\x1b[31m${t}\x1b[0m` : t;
+}
+
+/** Stops Gradle and everything it started (the test JVM included). */
+function killTree(child: cp.ChildProcess): void {
+  if (child.pid === undefined || child.exitCode !== null) return;
+  if (process.platform === 'win32') cp.spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true });
+  else child.kill('SIGTERM');
+}
+
+/** Live event file the init script writes for a module's test task. */
+function eventFile(mod: GradleModule, task: string): string {
+  return path.join(mod.dir, 'build', 'islet', 'test-events', `${task}.jsonl`);
 }
