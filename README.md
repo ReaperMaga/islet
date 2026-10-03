@@ -39,6 +39,11 @@ Islet also brings a JetBrains-style test window to Gradle projects (Kotlin and J
   their results as soon as Gradle finishes.
 - **Tree by module, class, nested class, test and parameterized invocation.** Works with
   multi-module builds and with several Gradle builds in one workspace.
+- **Full test output, live:** everything your tests and application print (for example a Quarkus
+  backend's startup and request logs) streams into Test Results while the tests run, stderr in red.
+  Each line is attached to the test that printed it; output from class-level setup goes to the
+  class. Select a test to see only its output, or use **Test: Show Output** for the whole run. Runs
+  without the live reporter show the output Gradle stored in its report after the run.
 - **Failures** show the message and stack trace, jump to the failing line, and offer an
   expected / actual diff for `assertEquals` failures. Red and green marks appear next to tests in the
   editor.
@@ -61,7 +66,7 @@ git clone https://github.com/ReaperMaga/islet.git
 cd islet
 npm install
 npm run package
-code --install-extension islet-0.3.0.vsix
+code --install-extension islet-0.4.0.vsix
 ```
 
 Then reload VS Code, click the GitHub icon in the activity bar and sign in when asked.

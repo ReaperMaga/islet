@@ -54,6 +54,8 @@ interface ActiveRun {
   reported: Set<vscode.TestItem>;
   /** Tests reported as started but not finished yet (live events). */
   running: Set<vscode.TestItem>;
+  /** Classes ("<module dir>|<class>") whose output arrived live, so the report's copy isn't shown twice. */
+  liveOutput: Set<string>;
   /** Time of the last result or event (runs Islet did not start). */
   lastActivity?: number;
 }
@@ -332,10 +334,23 @@ export class GradleTests implements vscode.Disposable {
 
     for (const line of text.split('\n')) {
       if (!line.trim()) continue;
-      let ev: { e?: string; cls?: string; name?: string; result?: string; ms?: number; msg?: string | null; trace?: string | null };
+      let ev: {
+        e?: string; cls?: string; name?: string | null; std?: string; text?: string;
+        result?: string; ms?: number; msg?: string | null; trace?: string | null;
+      };
       try {
         ev = JSON.parse(line);
       } catch {
+        continue;
+      }
+      if (ev.e === 'out') {
+        // Output printed by a test, or by class-level setup such as the application starting.
+        if (!ev.text || !ev.cls) continue;
+        const target = ev.name
+          ? this.itemForCase(mod, { name: ev.name, className: ev.cls, time: 0, status: 'passed' })
+          : this.classItem(mod, ev.cls);
+        active.run.appendOutput(toTerminal(ev.text, ev.std === 'StdErr'), undefined, target);
+        active.liveOutput.add(`${mod.dir}|${ev.cls}`);
         continue;
       }
       if (!ev.cls || !ev.name) continue;
@@ -409,12 +424,21 @@ export class GradleTests implements vscode.Disposable {
       const item = this.itemForCase(mod, c);
       this.report(active, item, c);
     }
+    // Output stored in the report, for runs that had no live reporter.
+    if (!active.liveOutput.has(`${mod.dir}|${suite.name}`) && (suite.systemOut || suite.systemErr)) {
+      const cls = this.classItem(mod, suite.name);
+      if (suite.systemOut) active.run.appendOutput(toTerminal(suite.systemOut, false), undefined, cls);
+      if (suite.systemErr) active.run.appendOutput(toTerminal(suite.systemErr, true), undefined, cls);
+    }
   }
 
   private report(active: ActiveRun, item: vscode.TestItem, c: TestCaseResult): void {
     const ms = c.time * 1000;
+    // Live events and the final XML report the same result: keep the first one only.
+    const firstReport = !active.reported.has(item);
     active.reported.add(item);
     active.running.delete(item);
+    if (!firstReport) return;
     const status: CaseStatus = c.status;
     if (status === 'passed') active.run.passed(item, ms);
     else if (status === 'skipped') active.run.skipped(item);
@@ -448,7 +472,7 @@ export class GradleTests implements vscode.Disposable {
     const files = await vscode.workspace.findFiles('**/build/test-results/*/TEST-*.xml', '{**/node_modules/**}', 5000);
     if (!files.length) return;
     const run = this.ctrl.createTestRun(new vscode.TestRunRequest(), 'Last Gradle results', true);
-    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set() };
+    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set() };
     for (const f of files) this.applyResultFile(f.fsPath, active);
     run.end();
   }
@@ -458,7 +482,7 @@ export class GradleTests implements vscode.Disposable {
   private ensureRun(): ActiveRun {
     if (this.active) return this.active;
     const run = this.ctrl.createTestRun(new vscode.TestRunRequest(), 'Gradle test', true);
-    this.active = { run, own: false, tasks: 0, reported: new Set(), running: new Set() };
+    this.active = { run, own: false, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set() };
     log.info('Gradle tests: detected a test run');
     this.reveal();
     this.touch(this.active);
@@ -528,7 +552,7 @@ export class GradleTests implements vscode.Disposable {
       this.active = undefined;
     }
     const run = this.ctrl.createTestRun(request, 'Gradle test', true);
-    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set() };
+    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set() };
     this.active = active;
     this.reveal();
 
@@ -639,3 +663,9 @@ export class GradleTests implements vscode.Disposable {
   }
 }
 
+
+/** Test output as terminal text: CRLF line ends, stderr in red. */
+function toTerminal(text: string, stderr: boolean): string {
+  const t = text.replace(/\r?\n/g, '\r\n');
+  return stderr ? `\x1b[31m${t}\x1b[0m` : t;
+}

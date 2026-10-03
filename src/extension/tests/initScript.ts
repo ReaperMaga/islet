@@ -64,6 +64,15 @@ if (!isletCacheRequested) {
                             ])
                         }
                     })
+                    // Everything the tests print (application logs included), as it happens.
+                    t.addTestOutputListener(new TestOutputListener() {
+                        void onOutput(TestDescriptor d, TestOutputEvent o) {
+                            IsletTestEvents.write(out, [
+                                e: 'out', cls: d.className, name: d.composite ? null : d.name,
+                                std: o.destination.toString(), text: o.message,
+                            ])
+                        }
+                    })
                 } catch (Throwable ignored) {
                 }
             }
