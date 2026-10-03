@@ -4,20 +4,30 @@
 // from the JUnit XML files Gradle writes to build/test-results/<task>/. Because results are read from
 // those files, every Gradle test run shows up: started from the terminal, from the Gradle extension's
 // Tasks view, or from Islet's own Run buttons.
+//
+// Live progress (a spinner per running test, results as each test finishes) comes from a small
+// Gradle init script that appends events to build/islet/test-events/<task>.jsonl. Islet passes it
+// to its own runs; with "islet.gradleTests.trackAllRuns" it is also installed in ~/.gradle/init.d
+// so runs started from the terminal or the Gradle extension report live too.
 import * as fs from 'fs';
+import * as os from 'os';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { log } from '../log';
 import { discoverTests } from './discovery';
 import { GradleModule, gradleCommand, moduleFor, resultLocation, testArgs } from './gradle';
+import { INIT_SCRIPT, INIT_SCRIPT_MARKER, INIT_SCRIPT_NAME } from './initScript';
 import { CaseStatus, parseJUnitXml, splitCaseName, SuiteResult, TestCaseResult } from './junitXml';
 
 const SOURCE_GLOB = '**/src/*[tT]est*/{kotlin,java}/**/*.{kt,java}';
 const RESULT_GLOB = '**/build/test-results/**';
+const EVENTS_GLOB = '**/build/islet/test-events/*.jsonl';
 const EXCLUDE_GLOB = '{**/node_modules/**,**/build/**,**/.gradle/**}';
 const TASK_TYPE = 'islet-gradle';
 /** A run started by a file change or a foreign Gradle task ends this long after the last activity. */
 const IDLE_END_MS = 5000;
+/** A run with tests still marked running is ended anyway after this long without any activity. */
+const STALE_RUN_MS = 10 * 60_000;
 const XML_BATCH_MS = 400;
 
 type ItemKind = 'module' | 'class' | 'test' | 'invocation';
@@ -42,6 +52,10 @@ interface ActiveRun {
   idle?: NodeJS.Timeout;
   /** Items that received a result in this run. */
   reported: Set<vscode.TestItem>;
+  /** Tests reported as started but not finished yet (live events). */
+  running: Set<vscode.TestItem>;
+  /** Time of the last result or event (runs Islet did not start). */
+  lastActivity?: number;
 }
 
 export class GradleTests implements vscode.Disposable {
@@ -57,8 +71,17 @@ export class GradleTests implements vscode.Disposable {
   private xmlQueue = new Set<string>();
   private xmlTimer: NodeJS.Timeout | undefined;
   private flushed: Promise<void> = Promise.resolve();
+  /** Bytes of each live event file already processed. */
+  private readonly eventOffsets = new Map<string, number>();
+  /** Init script passed to Islet's own Gradle runs. */
+  private readonly initScriptPath: string;
 
-  constructor() {
+  constructor(storageDir: string) {
+    fs.mkdirSync(storageDir, { recursive: true });
+    this.initScriptPath = path.join(storageDir, INIT_SCRIPT_NAME);
+    fs.writeFileSync(this.initScriptPath, INIT_SCRIPT);
+    this.syncGlobalInitScript();
+
     this.ctrl.createRunProfile('Run with Gradle', vscode.TestRunProfileKind.Run, (req, token) => this.runFromUi(req, token), true);
     this.ctrl.refreshHandler = () => this.discoverAll();
 
@@ -71,10 +94,18 @@ export class GradleTests implements vscode.Disposable {
     results.onDidCreate((u) => this.onResultFile(u));
     results.onDidChange((u) => this.onResultFile(u));
 
+    const events = vscode.workspace.createFileSystemWatcher(EVENTS_GLOB);
+    events.onDidCreate((u) => this.onEventFile(u));
+    events.onDidChange((u) => this.onEventFile(u));
+
     this.subs.push(
       this.ctrl,
       sources,
       results,
+      events,
+      vscode.workspace.onDidChangeConfiguration((e) => {
+        if (e.affectsConfiguration('islet.gradleTests')) this.syncGlobalInitScript();
+      }),
       vscode.tasks.onDidStartTaskProcess((e) => this.onTaskStart(e.execution.task)),
       vscode.tasks.onDidEndTaskProcess((e) => this.onTaskEnd(e.execution.task)),
       vscode.workspace.onDidChangeWorkspaceFolders(() => this.discoverAll()),
@@ -217,7 +248,9 @@ export class GradleTests implements vscode.Disposable {
 
   private invocationItem(parent: vscode.TestItem, name: string): vscode.TestItem {
     const d = this.data.get(parent)!;
-    const id = `i|${parent.id}|${name}`;
+    // Live events report "[1]", the XML report "[1] input=a": key by the index so both meet.
+    const index = /^\[\d+\]/.exec(name)?.[0] ?? name;
+    const id = `i|${parent.id}|${index}`;
     let item = parent.children.get(id);
     if (!item) {
       item = this.ctrl.createTestItem(id, name, parent.uri);
@@ -225,6 +258,8 @@ export class GradleTests implements vscode.Disposable {
       item.sortText = name.replace(/^\[(\d+)\]/, (_, n: string) => n.padStart(6, '0'));
       this.data.set(item, { kind: 'invocation', module: d.module, className: d.className, method: d.method });
       parent.children.add(item);
+    } else if (name.length > item.label.length) {
+      item.label = name; // prefer the more descriptive name
     }
     return item;
   }
@@ -261,6 +296,93 @@ export class GradleTests implements vscode.Disposable {
     }
   }
 
+  /** Live events: read the lines appended since last time and update the running tests. */
+  private onEventFile(uri: vscode.Uri): void {
+    if (!this.enabled()) return;
+    const file = uri.fsPath;
+    let text: string;
+    try {
+      const size = fs.statSync(file).size;
+      let offset = this.eventOffsets.get(file) ?? 0;
+      if (size < offset) offset = 0; // truncated: a new run of that task started
+      if (size === offset) return;
+      const fd = fs.openSync(file, 'r');
+      try {
+        const buf = Buffer.alloc(size - offset);
+        fs.readSync(fd, buf, 0, buf.length, offset);
+        text = buf.toString('utf8');
+      } finally {
+        fs.closeSync(fd);
+      }
+      // Only consume whole lines; a partially written last line is read next time.
+      const end = text.lastIndexOf('\n');
+      if (end < 0) return;
+      text = text.slice(0, end + 1);
+      this.eventOffsets.set(file, offset + Buffer.byteLength(text, 'utf8'));
+    } catch {
+      return;
+    }
+
+    // .../<module>/build/islet/test-events/<task>.jsonl
+    const moduleDir = path.dirname(path.dirname(path.dirname(path.dirname(file))));
+    const mod = this.moduleOf(path.join(moduleDir, 'build.gradle.kts'));
+    if (!mod) return;
+    this.moduleTask.set(mod.dir, path.basename(file, '.jsonl'));
+    const active = this.ensureRun();
+
+    for (const line of text.split('\n')) {
+      if (!line.trim()) continue;
+      let ev: { e?: string; cls?: string; name?: string; result?: string; ms?: number; msg?: string | null; trace?: string | null };
+      try {
+        ev = JSON.parse(line);
+      } catch {
+        continue;
+      }
+      if (!ev.cls || !ev.name) continue;
+      const item = this.itemForCase(mod, { name: ev.name, className: ev.cls, time: 0, status: 'passed' });
+      if (ev.e === 'start') {
+        active.run.started(item);
+        active.running.add(item);
+      } else if (ev.e === 'done') {
+        const status: CaseStatus = ev.result === 'SUCCESS' ? 'passed' : ev.result === 'SKIPPED' ? 'skipped' : 'failed';
+        this.report(active, item, {
+          name: ev.name,
+          className: ev.cls,
+          time: (ev.ms ?? 0) / 1000,
+          status,
+          message: ev.msg ?? undefined,
+          details: ev.trace ?? undefined,
+        });
+      }
+    }
+    this.touch(active);
+  }
+
+  /** Installs or removes the init script in the Gradle user home according to the setting. */
+  private syncGlobalInitScript(): void {
+    const cfg = vscode.workspace.getConfiguration('islet.gradleTests');
+    const want = cfg.get<boolean>('enabled', true) && cfg.get<boolean>('trackAllRuns', false);
+    const home = process.env.GRADLE_USER_HOME || path.join(os.homedir(), '.gradle');
+    const target = path.join(home, 'init.d', INIT_SCRIPT_NAME);
+    try {
+      const existing = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : undefined;
+      if (existing !== undefined && !existing.startsWith(INIT_SCRIPT_MARKER)) {
+        log.warn(`Gradle tests: ${target} exists and is not Islet's; leaving it alone`);
+        return;
+      }
+      if (want && existing !== INIT_SCRIPT) {
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        fs.writeFileSync(target, INIT_SCRIPT);
+        log.info(`Gradle tests: installed live progress reporter at ${target}`);
+      } else if (!want && existing !== undefined) {
+        fs.unlinkSync(target);
+        log.info(`Gradle tests: removed live progress reporter from ${target}`);
+      }
+    } catch (err) {
+      log.error('Gradle tests: could not update the Gradle init script', err);
+    }
+  }
+
   private async flushXml(): Promise<void> {
     const files = [...this.xmlQueue];
     this.xmlQueue.clear();
@@ -292,6 +414,7 @@ export class GradleTests implements vscode.Disposable {
   private report(active: ActiveRun, item: vscode.TestItem, c: TestCaseResult): void {
     const ms = c.time * 1000;
     active.reported.add(item);
+    active.running.delete(item);
     const status: CaseStatus = c.status;
     if (status === 'passed') active.run.passed(item, ms);
     else if (status === 'skipped') active.run.skipped(item);
@@ -325,7 +448,7 @@ export class GradleTests implements vscode.Disposable {
     const files = await vscode.workspace.findFiles('**/build/test-results/*/TEST-*.xml', '{**/node_modules/**}', 5000);
     if (!files.length) return;
     const run = this.ctrl.createTestRun(new vscode.TestRunRequest(), 'Last Gradle results', true);
-    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set() };
+    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set() };
     for (const f of files) this.applyResultFile(f.fsPath, active);
     run.end();
   }
@@ -335,7 +458,7 @@ export class GradleTests implements vscode.Disposable {
   private ensureRun(): ActiveRun {
     if (this.active) return this.active;
     const run = this.ctrl.createTestRun(new vscode.TestRunRequest(), 'Gradle test', true);
-    this.active = { run, own: false, tasks: 0, reported: new Set() };
+    this.active = { run, own: false, tasks: 0, reported: new Set(), running: new Set() };
     log.info('Gradle tests: detected a test run');
     this.reveal();
     this.touch(this.active);
@@ -345,9 +468,18 @@ export class GradleTests implements vscode.Disposable {
   /** Ends a run that Islet did not start once Gradle has been quiet for a moment. */
   private touch(active: ActiveRun): void {
     if (active.own) return;
+    active.lastActivity = Date.now();
+    this.scheduleIdleEnd(active);
+  }
+
+  private scheduleIdleEnd(active: ActiveRun): void {
     clearTimeout(active.idle);
     active.idle = setTimeout(() => {
-      if (active.tasks > 0 || this.active !== active) return;
+      if (this.active !== active) return;
+      // Still busy (a Gradle task runs, or a test started but has not finished): wait, but not
+      // forever, in case Gradle was killed mid-test.
+      const busy = active.tasks > 0 || active.running.size > 0;
+      if (busy && Date.now() - (active.lastActivity ?? 0) < STALE_RUN_MS) return this.scheduleIdleEnd(active);
       this.active = undefined;
       active.run.end();
     }, IDLE_END_MS);
@@ -396,7 +528,7 @@ export class GradleTests implements vscode.Disposable {
       this.active = undefined;
     }
     const run = this.ctrl.createTestRun(request, 'Gradle test', true);
-    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set() };
+    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set() };
     this.active = active;
     this.reveal();
 
@@ -456,7 +588,8 @@ export class GradleTests implements vscode.Disposable {
   private collectLeaves(item: vscode.TestItem, excluded: Set<vscode.TestItem>, out: vscode.TestItem[]): void {
     if (excluded.has(item)) return;
     const kind = this.data.get(item)?.kind;
-    if (kind === 'test' || kind === 'invocation') {
+    // A parameterized test with known invocations counts its invocations, not itself.
+    if (kind === 'invocation' || (kind === 'test' && item.children.size === 0)) {
       out.push(item);
       return;
     }
@@ -465,7 +598,7 @@ export class GradleTests implements vscode.Disposable {
 
   private runGradle(mod: GradleModule, task: string, filters: string[], token: vscode.CancellationToken): Promise<number | undefined> {
     const { command, prefixArgs } = gradleCommand(mod.rootDir);
-    const args = [...prefixArgs, ...testArgs(mod, task, filters)];
+    const args = [...prefixArgs, '--init-script', this.initScriptPath, ...testArgs(mod, task, filters)];
     const folder = vscode.workspace.getWorkspaceFolder(vscode.Uri.file(mod.rootDir)) ?? vscode.TaskScope.Workspace;
     const t = new vscode.Task(
       { type: TASK_TYPE, task, module: mod.projectPath || ':' },

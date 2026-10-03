@@ -30,6 +30,13 @@ Islet also brings a JetBrains-style test window to Gradle projects (Kotlin and J
   extension's Tasks view, or Islet's own Run buttons. Islet reads the JUnit XML files Gradle writes
   to `build/test-results/`, so it does not matter how Gradle was started.
 - **Test Results opens when a run starts**, with pass / fail / skipped and timings per test.
+- **Live progress like JetBrains:** a spinner on each running test and a counter that moves as each
+  test finishes. Islet passes a small Gradle init script to its own runs for this. To get live
+  progress for runs started from the terminal or the Gradle Tasks view too, turn on
+  `islet.gradleTests.trackAllRuns`: it installs the same script in `~/.gradle/init.d` (and removes
+  it when turned off). The script only writes to each project's `build/islet/` folder, never fails a
+  build, and stays inactive in builds that use the configuration cache. Without it, those runs show
+  their results as soon as Gradle finishes.
 - **Tree by module, class, nested class, test and parameterized invocation.** Works with
   multi-module builds and with several Gradle builds in one workspace.
 - **Failures** show the message and stack trace, jump to the failing line, and offer an
@@ -41,8 +48,9 @@ Islet also brings a JetBrains-style test window to Gradle projects (Kotlin and J
   `@RepeatedTest`, `@TestFactory` and `@TestTemplate` annotations, so run buttons appear before the
   first run.
 
-Settings: `islet.gradleTests.enabled` (default on) and `islet.gradleTests.revealOnRun` (open Test
-Results when a run starts, default on).
+Settings: `islet.gradleTests.enabled` (default on), `islet.gradleTests.revealOnRun` (open Test
+Results when a run starts, default on) and `islet.gradleTests.trackAllRuns` (live progress for runs
+started outside Islet, default off).
 
 ## Install
 
@@ -53,7 +61,7 @@ git clone https://github.com/ReaperMaga/islet.git
 cd islet
 npm install
 npm run package
-code --install-extension islet-0.2.0.vsix
+code --install-extension islet-0.3.0.vsix
 ```
 
 Then reload VS Code, click the GitHub icon in the activity bar and sign in when asked.

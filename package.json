@@ -2,7 +2,7 @@
   "name": "islet",
   "displayName": "Islet",
   "description": "GitHub issues and pull requests for the repository you're working in, plus Gradle test results in the Testing panel, in a calm Islands-style UI.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "reapermaga",
   "author": "ReaperMaga",
   "license": "MIT",
@@ -56,6 +56,11 @@
           "type": "boolean",
           "default": true,
           "description": "Open the Test Results view when a Gradle test run starts."
+        },
+        "islet.gradleTests.trackAllRuns": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Show live progress (each test turning green or red as it finishes) for Gradle runs started outside Islet too, such as `./gradlew test` in a terminal or the Gradle extension's Tasks view. Installs a small init script in `~/.gradle/init.d` that writes test events to each project's `build/islet/` folder; turning this off removes it. Islet's own Run buttons always show live progress."
         }
       }
     },
