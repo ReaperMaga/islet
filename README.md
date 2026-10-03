@@ -39,6 +39,11 @@ Islet also brings a JetBrains-style test window to Gradle projects (Kotlin and J
   their results as soon as Gradle finishes.
 - **Tree by module, class, nested class, test and parameterized invocation.** Works with
   multi-module builds and with several Gradle builds in one workspace.
+- **Gradle Run view** in the Testing sidebar, like JetBrains' run tree: only the tests of the current
+  run, in the order they start, with a spinner while running and ✓ / ✗ / skipped plus duration when
+  done. Failures sort to the top and their classes open automatically; the header shows live counts
+  (`3 running · 412 ✓ · 2 ✗`). Click a test to jump to its code. The Test Explorer above only spins
+  on tests that are actually running.
 - **Gradle Tests console**, like JetBrains' Run window: an editor tab (or panel terminal, see
   `islet.gradleTests.console`) that streams the run as it happens: Gradle's own output for runs
   started from Islet, everything the tests and your application print, each failure in red with
@@ -73,7 +78,7 @@ git clone https://github.com/ReaperMaga/islet.git
 cd islet
 npm install
 npm run package
-code --install-extension islet-0.6.0.vsix
+code --install-extension islet-0.7.0.vsix
 ```
 
 Then reload VS Code, click the GitHub icon in the activity bar and sign in when asked.

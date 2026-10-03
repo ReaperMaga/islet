@@ -20,6 +20,7 @@ import { GradleModule, gradleSpawn, moduleFor, resultLocation, testArgs } from '
 import { RunCounts, TestConsole } from './console';
 import { INIT_SCRIPT, INIT_SCRIPT_MARKER, INIT_SCRIPT_NAME } from './initScript';
 import { findGradleProcesses, killProcessTree } from './processes';
+import { RunTree } from './runTree';
 import { CaseStatus, parseJUnitXml, splitCaseName, SuiteResult, TestCaseResult } from './junitXml';
 
 const SOURCE_GLOB = '**/src/*[tT]est*/{kotlin,java}/**/*.{kt,java}';
@@ -77,11 +78,12 @@ export class GradleTests implements vscode.Disposable {
   /** Class ids discovered per source file, to clean up when a file changes. */
   private readonly fileClasses = new Map<string, Set<string>>();
   private readonly console = new TestConsole();
+  private readonly runTree = new RunTree((item) => this.chainOf(item));
   /** Gradle process of the current Islet run, if any. */
   private gradleChild: cp.ChildProcess | undefined;
   /** Set by "Stop All Gradle Processes" so a running Islet run does not start its next batch. */
   private stopRequested = false;
-  private readonly subs: vscode.Disposable[] = [this.console];
+  private readonly subs: vscode.Disposable[] = [this.console, this.runTree];
   private active: ActiveRun | undefined;
   private xmlQueue = new Set<string>();
   private xmlTimer: NodeJS.Timeout | undefined;
@@ -126,6 +128,7 @@ export class GradleTests implements vscode.Disposable {
       vscode.workspace.onDidChangeWorkspaceFolders(() => this.discoverAll()),
     );
 
+    void this.skipOldEvents();
     void this.discoverAll().then(() => this.loadExistingResults());
   }
 
@@ -311,6 +314,18 @@ export class GradleTests implements vscode.Disposable {
     }
   }
 
+  /** Event files left from earlier runs are not replayed: start reading at their current end. */
+  private async skipOldEvents(): Promise<void> {
+    const files = await vscode.workspace.findFiles(EVENTS_GLOB, '{**/node_modules/**}', 1000);
+    for (const f of files) {
+      try {
+        if (!this.eventOffsets.has(f.fsPath)) this.eventOffsets.set(f.fsPath, fs.statSync(f.fsPath).size);
+      } catch {
+        // gone
+      }
+    }
+  }
+
   /** Live events: read the lines appended since last time and update the running tests. */
   private onEventFile(uri: vscode.Uri): void {
     if (!this.enabled()) return;
@@ -375,6 +390,7 @@ export class GradleTests implements vscode.Disposable {
       if (ev.e === 'start') {
         active.run.started(item);
         active.running.add(item);
+        if (active.toConsole) this.runTree.started(item);
       } else if (ev.e === 'done') {
         const status: CaseStatus = ev.result === 'SUCCESS' ? 'passed' : ev.result === 'SKIPPED' ? 'skipped' : 'failed';
         this.report(active, item, {
@@ -462,6 +478,7 @@ export class GradleTests implements vscode.Disposable {
     if (!firstReport) return;
     const status: CaseStatus = c.status;
     active.status.set(item, status);
+    if (active.toConsole) this.runTree.result(item, status === 'errored' ? 'failed' : status, ms);
     if (status === 'passed') {
       active.run.passed(item, ms);
       active.counts.passed++;
@@ -478,6 +495,13 @@ export class GradleTests implements vscode.Disposable {
     }
   }
 
+  /** The item and its parents up to its module, outermost first (for the Gradle Run view). */
+  private chainOf(item: vscode.TestItem): vscode.TestItem[] {
+    const chain: vscode.TestItem[] = [];
+    for (let i: vscode.TestItem | undefined = item; i; i = i.parent) chain.unshift(i);
+    return chain;
+  }
+
   /** "OuterTest › Nested › test name" for console headings. */
   private describe(item: vscode.TestItem): string {
     const parts: string[] = [];
@@ -491,6 +515,7 @@ export class GradleTests implements vscode.Disposable {
   /** Ends a run and writes the summary line to the console. */
   private finish(active: ActiveRun, note?: string): void {
     active.run.end();
+    if (active.toConsole) this.runTree.done();
     if (active.toConsole) this.console.summary(active.counts, Date.now() - active.startedAt, note);
   }
 
@@ -529,6 +554,7 @@ export class GradleTests implements vscode.Disposable {
     this.active = { run, own: false, tasks: 0, reported: new Set(), running: new Set(), liveOutput: false, counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: true };
     log.info('Gradle tests: detected a test run');
     this.console.startRun('Gradle test · started outside Islet');
+    this.runTree.reset('started outside Islet');
     this.reveal();
     this.touch(this.active);
     return this.active;
@@ -600,6 +626,7 @@ export class GradleTests implements vscode.Disposable {
     this.active = active;
     const what = request.include?.length === 1 ? this.describe(request.include[0]) || request.include[0].label : 'all tests';
     this.console.startRun(`Gradle test · ${what}`);
+    this.runTree.reset(what);
     this.reveal();
 
     const roots: vscode.TestItem[] = [];
@@ -621,7 +648,6 @@ export class GradleTests implements vscode.Disposable {
       this.collectLeaves(item, excluded, entry.leaves);
     }
 
-    for (const entry of plan.values()) for (const leaf of entry.leaves) run.enqueued(leaf);
 
     // One Gradle call per build when its selected modules all run completely (saves Gradle's startup
     // per module); otherwise one call per module, because --tests filters apply to every task.
@@ -658,7 +684,15 @@ export class GradleTests implements vscode.Disposable {
           note = this.stopRequested ? 'stopped' : 'cancelled';
           break;
         }
-        for (const leaf of entry.leaves) run.started(leaf);
+        // Old events from the previous run must not show up in this one.
+        for (const file of entry.eventFiles) {
+          try {
+            fs.rmSync(file, { force: true });
+          } catch {
+            // in use or gone; Gradle truncates it when the task starts anyway
+          }
+          this.eventOffsets.set(vscode.Uri.file(file).fsPath, 0);
+        }
         // Read the live event files often while Gradle runs, so test output keeps its place among
         // Gradle's own output (file watcher events alone can lag behind).
         const poll = setInterval(() => {
