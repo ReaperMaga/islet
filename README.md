@@ -43,7 +43,8 @@ Islet also brings a JetBrains-style test window to Gradle projects (Kotlin and J
   `islet.gradleTests.console`) that streams the run as it happens: Gradle's own output for runs
   started from Islet, everything the tests and your application print, each failure in red with
   its stack trace (file locations are clickable), and a summary such as
-  `Tests: 1258 passed, 2 failed, 1 skipped · 2m 14s`. Islet runs Gradle with `--continue`, so every
+  `Tests: 1258 passed, 2 failed, 1 skipped · 2m 14s`. Closed it? **Islet: Show Gradle Tests Console**
+  (or the console button in the Testing panel toolbar) reopens it with the whole run. Islet runs Gradle with `--continue`, so every
   module's tests run even when one fails, and runs a whole build in a single Gradle call.
 - **Full test output, live:** everything your tests and application print (for example a Quarkus
   backend's startup and request logs) streams into Test Results while the tests run, stderr in red.
@@ -72,7 +73,7 @@ git clone https://github.com/ReaperMaga/islet.git
 cd islet
 npm install
 npm run package
-code --install-extension islet-0.5.0.vsix
+code --install-extension islet-0.5.1.vsix
 ```
 
 Then reload VS Code, click the GitHub icon in the activity bar and sign in when asked.
@@ -86,6 +87,7 @@ Requirements: VS Code 1.95 or newer, a repository with a GitHub remote, and Git.
 | `Islet: Refresh` | Reloads the list and any open detail tabs. |
 | `Islet: Sign in to GitHub` | Signs in with VS Code's GitHub account. |
 | `Islet: Open Issue or Pull Request…` | Opens an item by number. |
+| `Islet: Show Gradle Tests Console` | Shows the test console, reopening it with the current or last run. |
 
 ## Development
 

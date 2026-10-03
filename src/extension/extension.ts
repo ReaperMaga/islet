@@ -41,7 +41,11 @@ export function activate(context: vscode.ExtensionContext): void {
   // Gradle test results in the Testing panel. Separate from the GitHub panel, so a failure here
   // cannot affect it.
   try {
-    context.subscriptions.push(new GradleTests(context.globalStorageUri.fsPath));
+    const gradleTests = new GradleTests(context.globalStorageUri.fsPath);
+    context.subscriptions.push(
+      gradleTests,
+      vscode.commands.registerCommand('islet.showTestConsole', () => gradleTests.showConsole()),
+    );
   } catch (err) {
     log.error('Gradle tests could not start', err);
   }

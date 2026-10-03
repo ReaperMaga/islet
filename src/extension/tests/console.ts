@@ -33,6 +33,9 @@ export class TestConsole implements vscode.Disposable {
   private ready = false;
   /** Whether the last written character ended a line, so headings start on a fresh line. */
   private atLineStart = true;
+  /** Everything written for the current/last run, replayed when the console is reopened. */
+  private history: string[] = [];
+  private historySize = 0;
 
   constructor() {
     this.subs.push(
@@ -52,33 +55,12 @@ export class TestConsole implements vscode.Disposable {
 
   /** Opens (or reuses) the console and clears it for a new run. */
   startRun(title: string): void {
-    const where = this.location();
-    if (where === 'off') return;
-    if (!this.terminal) {
-      this.ready = false;
-      this.pending = [];
-      const pty: vscode.Pseudoterminal = {
-        onDidWrite: this.writer.event,
-        open: () => {
-          this.ready = true;
-          for (const chunk of this.pending) this.writer.fire(chunk);
-          this.pending = [];
-        },
-        close: () => {
-          this.terminal = undefined;
-          this.ready = false;
-        },
-      };
-      this.terminal = vscode.window.createTerminal({
-        name: 'Gradle Tests',
-        pty,
-        iconPath: new vscode.ThemeIcon('beaker'),
-        location: where === 'editor' ? { viewColumn: vscode.ViewColumn.Active, preserveFocus: true } : vscode.TerminalLocation.Panel,
-      });
-    } else {
-      this.emit('\x1b[2J\x1b[3J\x1b[H'); // clear screen and scrollback
-    }
-    this.terminal.show(true);
+    this.history = [];
+    this.historySize = 0;
+    if (this.location() === 'off') return;
+    if (this.terminal) this.emit('\x1b[2J\x1b[3J\x1b[H', false); // clear screen and scrollback
+    else this.open(false);
+    this.terminal?.show(true);
     this.atLineStart = true;
     this.line(`${CYAN}${BOLD}▶ ${title}${RESET}  ${DIM}${new Date().toLocaleTimeString()}${RESET}`);
     this.line('');
@@ -123,7 +105,46 @@ export class TestConsole implements vscode.Disposable {
     this.atLineStart = true;
   }
 
-  private emit(chunk: string): void {
+  /** Command: shows the console, reopening it with the current/last run if it was closed. */
+  show(): void {
+    if (!this.terminal) this.open(true);
+    this.terminal?.show(false);
+  }
+
+  /** Creates the terminal; with `replay`, it starts with everything written for the last run. */
+  private open(replay: boolean): void {
+    const where = this.location();
+    this.ready = false;
+    this.pending = replay ? [...this.history] : [];
+    if (replay && !this.history.length) this.pending.push(`${DIM}No Gradle test run yet. Run tests from the Testing panel.${RESET}\r\n`);
+    const pty: vscode.Pseudoterminal = {
+      onDidWrite: this.writer.event,
+      open: () => {
+        this.ready = true;
+        for (const chunk of this.pending) this.writer.fire(chunk);
+        this.pending = [];
+      },
+      close: () => {
+        this.terminal = undefined;
+        this.ready = false;
+      },
+    };
+    this.terminal = vscode.window.createTerminal({
+      name: 'Gradle Tests',
+      pty,
+      iconPath: new vscode.ThemeIcon('beaker'),
+      location:
+        where === 'panel' ? vscode.TerminalLocation.Panel : { viewColumn: vscode.ViewColumn.Active, preserveFocus: !replay },
+    });
+  }
+
+  private emit(chunk: string, record = true): void {
+    if (record) {
+      // Keep up to ~8 MB of the run for replay; drop the oldest output beyond that.
+      this.history.push(chunk);
+      this.historySize += chunk.length;
+      while (this.historySize > 8_000_000 && this.history.length > 1) this.historySize -= this.history.shift()!.length;
+    }
     if (!this.terminal) return;
     if (this.ready) this.writer.fire(chunk);
     else this.pending.push(chunk);

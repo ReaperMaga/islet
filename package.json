@@ -2,7 +2,7 @@
   "name": "islet",
   "displayName": "Islet",
   "description": "GitHub issues and pull requests for the repository you're working in, plus Gradle test results in the Testing panel, in a calm Islands-style UI.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "publisher": "reapermaga",
   "author": "ReaperMaga",
   "license": "MIT",
@@ -73,6 +73,12 @@
         "command": "islet.openItem",
         "title": "Open Issue or Pull Request…",
         "category": "Islet"
+      },
+      {
+        "command": "islet.showTestConsole",
+        "title": "Show Gradle Tests Console",
+        "category": "Islet",
+        "icon": "$(terminal)"
       }
     ],
     "configuration": {
@@ -116,6 +122,11 @@
           "command": "islet.refresh",
           "when": "view == islet.sidebar",
           "group": "navigation"
+        },
+        {
+          "command": "islet.showTestConsole",
+          "when": "view == workbench.view.testing",
+          "group": "navigation@90"
         }
       ]
     }

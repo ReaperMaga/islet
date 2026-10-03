@@ -55,8 +55,8 @@ interface ActiveRun {
   reported: Set<vscode.TestItem>;
   /** Tests reported as started but not finished yet (live events). */
   running: Set<vscode.TestItem>;
-  /** Classes ("<module dir>|<class>") whose output arrived live, so the report's copy isn't shown twice. */
-  liveOutput: Set<string>;
+  /** Output arrived live in this run, so the copy stored in the XML report is not shown again. */
+  liveOutput: boolean;
   /** Time of the last result or event (runs Islet did not start). */
   lastActivity?: number;
   counts: RunCounts;
@@ -362,7 +362,7 @@ export class GradleTests implements vscode.Disposable {
             : this.classItem(mod, ev.cls);
         active.run.appendOutput(toTerminal(ev.text, ev.std === 'StdErr'), undefined, target);
         if (active.toConsole) this.console.write(ev.text, ev.std === 'StdErr');
-        if (ev.cls) active.liveOutput.add(`${mod.dir}|${ev.cls}`);
+        active.liveOutput = true;
         continue;
       }
       if (!ev.cls || !ev.name) continue;
@@ -437,7 +437,7 @@ export class GradleTests implements vscode.Disposable {
       this.report(active, item, c);
     }
     // Output stored in the report, for runs that had no live reporter.
-    if (!active.liveOutput.has(`${mod.dir}|${suite.name}`) && (suite.systemOut || suite.systemErr)) {
+    if (!active.liveOutput && (suite.systemOut || suite.systemErr)) {
       const cls = this.classItem(mod, suite.name);
       if (suite.systemOut) active.run.appendOutput(toTerminal(suite.systemOut, false), undefined, cls);
       if (suite.systemErr) active.run.appendOutput(toTerminal(suite.systemErr, true), undefined, cls);
@@ -511,7 +511,7 @@ export class GradleTests implements vscode.Disposable {
     const files = await vscode.workspace.findFiles('**/build/test-results/*/TEST-*.xml', '{**/node_modules/**}', 5000);
     if (!files.length) return;
     const run = this.ctrl.createTestRun(new vscode.TestRunRequest(), 'Last Gradle results', true);
-    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set(), counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: false };
+    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: false, counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: false };
     for (const f of files) this.applyResultFile(f.fsPath, active);
     run.end();
   }
@@ -521,7 +521,7 @@ export class GradleTests implements vscode.Disposable {
   private ensureRun(): ActiveRun {
     if (this.active) return this.active;
     const run = this.ctrl.createTestRun(new vscode.TestRunRequest(), 'Gradle test', true);
-    this.active = { run, own: false, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set(), counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: true };
+    this.active = { run, own: false, tasks: 0, reported: new Set(), running: new Set(), liveOutput: false, counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: true };
     log.info('Gradle tests: detected a test run');
     this.console.startRun('Gradle test · started outside Islet');
     this.reveal();
@@ -591,7 +591,7 @@ export class GradleTests implements vscode.Disposable {
       this.active = undefined;
     }
     const run = this.ctrl.createTestRun(request, 'Gradle test', true);
-    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: new Set(), counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: true };
+    const active: ActiveRun = { run, own: true, tasks: 0, reported: new Set(), running: new Set(), liveOutput: false, counts: { passed: 0, failed: 0, skipped: 0 }, status: new Map(), startedAt: Date.now(), toConsole: true };
     this.active = active;
     const what = request.include?.length === 1 ? this.describe(request.include[0]) || request.include[0].label : 'all tests';
     this.console.startRun(`Gradle test · ${what}`);
@@ -749,6 +749,11 @@ export class GradleTests implements vscode.Disposable {
         resolve(code ?? undefined);
       });
     });
+  }
+
+  /** Command: show the Gradle Tests console, reopening it if it was closed. */
+  showConsole(): void {
+    this.console.show();
   }
 
   dispose(): void {
