@@ -73,7 +73,7 @@ git clone https://github.com/ReaperMaga/islet.git
 cd islet
 npm install
 npm run package
-code --install-extension islet-0.5.1.vsix
+code --install-extension islet-0.6.0.vsix
 ```
 
 Then reload VS Code, click the GitHub icon in the activity bar and sign in when asked.
@@ -88,6 +88,7 @@ Requirements: VS Code 1.95 or newer, a repository with a GitHub remote, and Git.
 | `Islet: Sign in to GitHub` | Signs in with VS Code's GitHub account. |
 | `Islet: Open Issue or Pull Request…` | Opens an item by number. |
 | `Islet: Show Gradle Tests Console` | Shows the test console, reopening it with the current or last run. |
+| `Islet: Stop All Gradle Processes` | Stops every Gradle build, test JVM and daemon on this computer, after asking. Also a stop button in the Testing panel toolbar. |
 
 ## Development
 

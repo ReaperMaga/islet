@@ -19,6 +19,7 @@ import { discoverTests } from './discovery';
 import { GradleModule, gradleSpawn, moduleFor, resultLocation, testArgs } from './gradle';
 import { RunCounts, TestConsole } from './console';
 import { INIT_SCRIPT, INIT_SCRIPT_MARKER, INIT_SCRIPT_NAME } from './initScript';
+import { findGradleProcesses, killProcessTree } from './processes';
 import { CaseStatus, parseJUnitXml, splitCaseName, SuiteResult, TestCaseResult } from './junitXml';
 
 const SOURCE_GLOB = '**/src/*[tT]est*/{kotlin,java}/**/*.{kt,java}';
@@ -76,6 +77,10 @@ export class GradleTests implements vscode.Disposable {
   /** Class ids discovered per source file, to clean up when a file changes. */
   private readonly fileClasses = new Map<string, Set<string>>();
   private readonly console = new TestConsole();
+  /** Gradle process of the current Islet run, if any. */
+  private gradleChild: cp.ChildProcess | undefined;
+  /** Set by "Stop All Gradle Processes" so a running Islet run does not start its next batch. */
+  private stopRequested = false;
   private readonly subs: vscode.Disposable[] = [this.console];
   private active: ActiveRun | undefined;
   private xmlQueue = new Set<string>();
@@ -647,9 +652,10 @@ export class GradleTests implements vscode.Disposable {
 
     let note: string | undefined;
     try {
+      this.stopRequested = false;
       for (const entry of batches) {
-        if (token.isCancellationRequested) {
-          note = 'cancelled';
+        if (token.isCancellationRequested || this.stopRequested) {
+          note = this.stopRequested ? 'stopped' : 'cancelled';
           break;
         }
         for (const leaf of entry.leaves) run.started(leaf);
@@ -731,6 +737,7 @@ export class GradleTests implements vscode.Disposable {
       let child: cp.ChildProcess;
       try {
         child = cp.spawn(command, args, { cwd: rootDir, env: process.env, windowsHide: true, windowsVerbatimArguments: verbatim });
+        this.gradleChild = child;
       } catch (err) {
         log.error('Gradle tests: could not start Gradle', err);
         this.console.write(`Could not start Gradle: ${err instanceof Error ? err.message : String(err)}\n`, true);
@@ -746,9 +753,48 @@ export class GradleTests implements vscode.Disposable {
       });
       child.on('close', (code) => {
         cancel.dispose();
+        if (this.gradleChild === child) this.gradleChild = undefined;
         resolve(code ?? undefined);
       });
     });
+  }
+
+  /** Command: stop every Gradle process on this machine (clients, daemons, test JVMs), after asking. */
+  async stopAllGradle(): Promise<void> {
+    const procs = await findGradleProcesses();
+    const own = this.gradleChild && this.gradleChild.exitCode === null ? 1 : 0;
+    if (!procs.length && !own) {
+      void vscode.window.showInformationMessage('No Gradle processes are running.');
+      return;
+    }
+    const count = (k: string) => procs.filter((p) => p.kind === k).length;
+    const parts = [
+      count('client') + own ? `${count('client') + own} running build${count('client') + own === 1 ? '' : 's'}` : '',
+      count('worker') ? `${count('worker')} test JVM${count('worker') === 1 ? '' : 's'}` : '',
+      count('daemon') ? `${count('daemon')} daemon${count('daemon') === 1 ? '' : 's'}` : '',
+    ].filter(Boolean);
+    const choice = await vscode.window.showWarningMessage(
+      `Stop all Gradle processes on this computer? (${parts.join(', ')})`,
+      { modal: true, detail: 'Every running Gradle build and test run stops. Gradle starts a new daemon on the next build.' },
+      'Stop All',
+    );
+    if (choice !== 'Stop All') return;
+
+    this.stopRequested = true;
+    if (this.gradleChild) killTree(this.gradleChild);
+    for (const e of vscode.tasks.taskExecutions) if (this.isGradleTestTask(e.task)) e.terminate();
+    // Clients first (cancels their builds), then test JVMs, then daemons.
+    for (const kind of ['client', 'worker', 'daemon'] as const) {
+      await Promise.all(procs.filter((p) => p.kind === kind).map((p) => killProcessTree(p.pid)));
+    }
+    this.console.write(`\n\x1b[31m■ Stopped all Gradle processes (${parts.join(', ')}).\x1b[0m\n`);
+    log.info(`Gradle tests: stopped all Gradle processes (${parts.join(', ')})`);
+    if (this.active && !this.active.own) {
+      const active = this.active;
+      this.active = undefined;
+      this.finish(active, 'stopped');
+    }
+    void vscode.window.showInformationMessage(`Stopped ${parts.join(', ')}.`);
   }
 
   /** Command: show the Gradle Tests console, reopening it if it was closed. */

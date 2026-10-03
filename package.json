@@ -2,7 +2,7 @@
   "name": "islet",
   "displayName": "Islet",
   "description": "GitHub issues and pull requests for the repository you're working in, plus Gradle test results in the Testing panel, in a calm Islands-style UI.",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "publisher": "reapermaga",
   "author": "ReaperMaga",
   "license": "MIT",
@@ -79,6 +79,12 @@
         "title": "Show Gradle Tests Console",
         "category": "Islet",
         "icon": "$(terminal)"
+      },
+      {
+        "command": "islet.stopAllGradle",
+        "title": "Stop All Gradle Processes",
+        "category": "Islet",
+        "icon": "$(debug-stop)"
       }
     ],
     "configuration": {
@@ -127,6 +133,11 @@
           "command": "islet.showTestConsole",
           "when": "view == workbench.view.testing",
           "group": "navigation@90"
+        },
+        {
+          "command": "islet.stopAllGradle",
+          "when": "view == workbench.view.testing",
+          "group": "navigation@91"
         }
       ]
     }

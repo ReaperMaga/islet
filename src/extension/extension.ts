@@ -45,6 +45,7 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
       gradleTests,
       vscode.commands.registerCommand('islet.showTestConsole', () => gradleTests.showConsole()),
+      vscode.commands.registerCommand('islet.stopAllGradle', () => gradleTests.stopAllGradle().catch((err) => log.error('Stopping Gradle failed', err))),
     );
   } catch (err) {
     log.error('Gradle tests could not start', err);
