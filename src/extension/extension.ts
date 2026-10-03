@@ -7,7 +7,6 @@ import { Controller, SIDEBAR_VIEW_ID } from './controller';
 import { GitHubContentProvider, SCHEME } from './diff';
 import { initLog, log } from './log';
 import { RepoResolver } from './repo';
-import { GradleTests } from './tests/controller';
 
 export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(initLog());
@@ -37,19 +36,6 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.commands.registerCommand('islet.signIn', () => controller.signIn().catch((err) => log.error('Sign-in failed', err))),
     vscode.commands.registerCommand('islet.openItem', () => controller.openItemByNumber().catch((err) => log.error('Open item failed', err))),
   );
-
-  // Gradle test results in the Testing panel. Separate from the GitHub panel, so a failure here
-  // cannot affect it.
-  try {
-    const gradleTests = new GradleTests(context.globalStorageUri.fsPath);
-    context.subscriptions.push(
-      gradleTests,
-      vscode.commands.registerCommand('islet.showTestConsole', () => gradleTests.showConsole()),
-      vscode.commands.registerCommand('islet.stopAllGradle', () => gradleTests.stopAllGradle().catch((err) => log.error('Stopping Gradle failed', err))),
-    );
-  } catch (err) {
-    log.error('Gradle tests could not start', err);
-  }
 }
 
 export function deactivate(): void {
